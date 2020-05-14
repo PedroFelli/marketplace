@@ -15,18 +15,70 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
 Route::get('/model', function () {
     //$products = \App\Product::all();
 
+
+
 //    $user = new \App\User();
-
-
 //    $user->name = 'Usuario teste';
 //    $user->email = 'email@teste.com';
 //    $user->password = bcrypt('1234567');
 //
 //    $user->save();
+//    $user = \App\User::find(4);
+//
+//    return $user->store;
+//  $loja = \App\Store::find(1);
+//  $loja->products()->products()->where('id', 9)->get();
+//  return $loja;
 
-    return \App\User::all();
+    //Criar uma loja para um usuario
+//    $user = \App\User::find(10);
+//    $store = $user->store()->create([
+//        'name' => 'Loja teste',
+//        'description' => 'Loja teste de produtos de informatica',
+//        'mobile_phone' => 'xx-xxxxx-xxxx',
+//        'phone' => 'xx-xxxx-xxx',
+//        'slug'=> 'loja-teste'
+//    ]);
+//
+//    dd($store);
+    //criar um produto para uma loja
+//    $store = \App\Store::find(41);
+//    $product = $store->products()->create([
+//        'name' => 'Notebook dell',
+//        'description' => 'CORE I5 8G 500GB',
+//        'body' => 'Qualquer coisa',
+//        'price'=> 2999.9,
+//        'slug' => 'notebook-dell',
+//    ]);
+//
+//    dd($product);
+
+//    criar uma categoria
+//    \App\Category::create([
+//        'name' => 'Games',
+//        'slug' => 'games',
+//    ]);
+//
+//    \App\Category::create([
+//        'name' => 'Notebooks',
+//        'slug' => 'notebooks',
+//    ]);
+//
+// return \App\Category::all();
+
+    //adicionar um produto para uma categoria ou vice-versa
+//    $product = \App\Product::find(41);
+//
+//    dd($product->categories()->sync([1,2]));
+//
+//    return \App\User::all();
 });
+
+
+
+Route::get('/admin/stores', 'Admin\\StoreController@index');
+Route::get('/admin/stores/create', 'Admin\\StoreController@create');
+Route::post('/admin/stores/store', 'Admin\\StoreController@store');
