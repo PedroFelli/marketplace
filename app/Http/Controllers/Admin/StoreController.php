@@ -5,9 +5,14 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreRequest;
+use App\Traits\UploadTrait;
+use Illuminate\Support\Facades\Storage;
+
 
 class StoreController extends Controller
 {
+    use UploadTrait;
+
     public function __construct()
     {
         $this->middleware('user.has.store')->only(['create', 'store']);
@@ -28,6 +33,11 @@ class StoreController extends Controller
     public  function store(StoreRequest $request){
         $data = $request->all();
         $user= auth()->user();
+
+        if($request->hasFile('logo')){
+            $data['logo'] = $this->imageUpload($request->file('logo'));
+        }
+
         $store = $user->store()->create($data);
 
         flash('Loja criada com Sucesso')->success();
@@ -42,8 +52,15 @@ class StoreController extends Controller
 
     public function update(StoreRequest $request, $store){
         $data = $request->all();
-
         $store = \App\Store::find($store);
+
+        if($request->hasFile('logo')){
+            if(Storage::disk('public')->exists($store->logo)){
+                Storage::disk('public')->exists($store->logo);
+            }
+            $data['logo'] = $this->imageUpload($request->file('logo'));
+        }
+
         $store->update($data);
 
         flash('Loja Atualizada com Sucesso')->success();

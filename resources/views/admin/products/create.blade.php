@@ -3,7 +3,7 @@
 
 @section('content')
     <h1>Criar Produto</h1>
-    <form action="{{route('admin.products.store')}}" method="post">
+    <form action="{{route('admin.products.store')}}" method="post" enctype="multipart/form-data">
         @csrf
 
         <div class="form-group">
@@ -50,11 +50,25 @@
             </div>
             @enderror
         </div>
+        <div class="form-form-group">
+            <label for="">Categorias</label>
+            <select name="categories[]" id="" class="form-control" multiple>
+                @foreach($categories as $category)
+                    <option value="{{$category->id}}">{{$category->name}}</option>
+                @endforeach
+            </select>
+        </div>
 
         <div class="form-group">
-            <label>Slug</label>
-            <input type="text" name="slug" class="form-control">
+            <label>Fotos do Produto</label>
+            <input type="file" name="photos[]" class="form-control @error('photos.*') is-invalid @enderror" multiple>
+            @error('photos.*')
+            <div class="invalid-feedback">
+                {{$message}}
+            </div>
+            @enderror
         </div>
+
 
 
         <div>

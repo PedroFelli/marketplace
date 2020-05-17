@@ -4,7 +4,7 @@
 <table class="table table-striped">
     @if(!$store)
     <a href="{{route('admin.stores.create')}}" class="btn btn-lg btn-success">Criar loja</a>
-    @endif
+    @else
     <thead>
         <tr>
             <th>#</th>
@@ -31,6 +31,7 @@
             </tr>
     </tbody>
 </table>
+@endif
 
 
 @endsection
