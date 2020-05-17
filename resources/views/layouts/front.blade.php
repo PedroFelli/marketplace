@@ -32,7 +32,7 @@
             </li>
         </ul>
 
-        @auth
+
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item @if(request()->is('admin/stores*')) active @endif">
                     <a class="nav-link" href="{{route('admin.stores.index')}}">Lojas <span class="sr-only">(current)</span></a>
@@ -68,7 +68,7 @@
                     </li>
                 </ul>
             </div>
-        @endauth
+
 
     </div>
 </nav>
@@ -78,4 +78,5 @@
     @yield('content')
 </div>
 </body>
+@yield('scripts')
 </html>
