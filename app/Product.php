@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
     use HasSlug;
+
     protected $fillable = ['name', 'description', 'body', 'price','slug'];
 
     public function getSlugOptions() : SlugOptions
