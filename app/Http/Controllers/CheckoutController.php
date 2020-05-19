@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Payment\PagSeguro\CreditCard;
 use Illuminate\Http\Request;
+use PagSeguro\Configuration\Configure;
 
 class CheckoutController extends Controller
 {
@@ -50,6 +51,10 @@ class CheckoutController extends Controller
 
             $userOder->stores()->sync($stores);
 
+            //Notificar Loja de novo pedido
+
+            $store = (new Store())->notifyStoreOwners($stores);
+
             session()->forget('cart');
             session()->forget('pagseguro_session_code');
 
@@ -77,10 +82,12 @@ class CheckoutController extends Controller
 
     private function makePagSeguroSession(){
 
+        dd( $sessionCode = \PagSeguro\Services\Session::create(
+            \PagSeguro\Configuration\Configure::getAccountCredentials()
+        ));
         if(!session()->has('pagseguro_session_code')){
-            $sessionCode = \PagSeguro\Services\Session::create(
-                \PagSeguro\Configuration\Configure::getAccountCredentials()
-            );
+
+
 
             session()->put('pagseguro_session_code', $sessionCode->getResult());
         }

@@ -5,6 +5,7 @@ namespace App;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 use Illuminate\Database\Eloquent\Model;
+use App\Notifications\StoreReceiveNewOrder;
 
 class Store extends Model
 {
@@ -28,6 +29,15 @@ class Store extends Model
 
     public function orders(){
         return  $this->belongsToMany(UserOrder::class, 'order_store', null, 'order_id');
+    }
+
+    public function notifyStoreOwners(array $storeId = []){
+        $stores = $this->whereIn('id', $storeId)->get();
+
+        return $stores->map(function ($store){
+            return $store->user;
+        })->each->notify(new StoreReceiveNewOrder);
+
     }
 
 }

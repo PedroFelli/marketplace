@@ -59,6 +59,7 @@
     <script>
         const sessionId = '{{session()->get('pagseguro_session_code')}}';
         PagSeguroDirectPayment.setSessionId(sessionId);
+
     </script>
 
     <script>

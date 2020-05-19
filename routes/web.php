@@ -47,4 +47,23 @@ Route::group(['middleware' => ['auth']], function (){
 
 Auth::routes();
 
+
+Route::get('not', function(){
+
+    $user = \App\User::find(41);
+//    $user->notify(new \App\Notifications\StoreReceiveNewOrder());
+
+//    $notification = $user->unreadNotifications->first();
+//    $notification->markAsRead();
+
+//        $stores= [43, 41, 30];
+//        $store = \App\Store::whereIn('id', $stores)->get();
+//
+//        return $store->map(function ($store){
+//            return $store->user;
+//        });
+//
+//    return $store;
+});
+
 //Route::get('/home', 'HomeController@index')->name('home');
