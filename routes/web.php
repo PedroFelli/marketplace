@@ -30,11 +30,11 @@ Route::prefix('checkout')->name('checkout.')->group(function (){
     Route::get('/thanks','CheckoutController@thanks')->name('thanks');
 });
 
-Route::group(['middleware' => ['auth']], function (){
-    Route::get('/my-orders', 'UserOrderController@index')->name('user.orders');
+Route::get('/my-orders', 'UserOrderController@index')->name('user.orders')->middleware('auth');
 
-
+Route::group(['middleware' => ['auth', 'access.control.store.admin']], function (){
     Route::prefix('admin')->name('admin.')->namespace('Admin')->group(function (){
+        Route::get('/', 'NotificationController@notifications')->name('notifications.index');
         Route::resource('stores', 'StoreController');
         Route::resource('products', 'ProductController');
         Route::resource('categories', 'CategoryController');
@@ -42,6 +42,10 @@ Route::group(['middleware' => ['auth']], function (){
         Route::post('photos/remove/', 'ProductPhotoController@removePhoto')->name('photo.remove');
 
         Route::get('orders/my', 'OrdersController@index')->name('orders.my');
+
+        Route::get('notifications', 'NotificationController@notifications')->name('notifications.index');
+        Route::get('notifications/read-all', 'NotificationController@readAll')->name('notifications.read.all');
+        Route::get('notifications/read/{notification}', 'NotificationController@read')->name('notifications.read');
     });
 });
 
@@ -66,4 +70,4 @@ Route::get('not', function(){
 //    return $store;
 });
 
-//Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home');

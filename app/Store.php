@@ -10,7 +10,7 @@ use App\Notifications\StoreReceiveNewOrder;
 class Store extends Model
 {
     use HasSlug;
-    protected $fillable = ['name', 'description', 'phone', 'mobile_phone','slug', 'logo'];
+    protected $fillable = ['name', 'description', 'phone', 'mobile_phone', 'slug', 'logo'];
 
     public function user(){
         return  $this->belongsTo(User::class);

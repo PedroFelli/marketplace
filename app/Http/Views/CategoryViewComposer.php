@@ -16,7 +16,6 @@ class CategoryViewComposer
     }
 
     public function compose($view){
-        // TODO  add campo id na linha abaixo
         return $view->with('categories', $this->category->all(['name', 'slug']));
     }
 }

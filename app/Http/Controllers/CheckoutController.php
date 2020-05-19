@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Payment\PagSeguro\CreditCard;
+use App\Store;
 use Illuminate\Http\Request;
 
 
@@ -44,7 +45,7 @@ class CheckoutController extends Controller
                 'pagseguro_code' => $result->getCode(),
                 'pagseguro_status' => $result->getStatus(),
                 'items' => serialize($cartItems),
-                'store_id' => 45,
+                'store_id' => 1,  #ignoreline
             ];
 
             $userOder = $user->orders()->create($userOder);
