@@ -31,7 +31,7 @@ class StoreReceiveNewOrder extends Notification
      */
     public function via($notifiable)
     {
-        return ['database', 'mail', 'nexmo'];
+        return ['database', 'mail'];
     }
 
     /**
