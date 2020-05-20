@@ -3,13 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Ramsey\Uuid\Uuid;
 
 class CartController extends Controller
 {
     public function index(){
         $cart = session()->has('cart') ? session()->get('cart') : [];
 
+
         return view('cart', compact('cart'));
+
+
     }
 
     public function add(Request $request){
@@ -20,7 +24,7 @@ class CartController extends Controller
         if(!$product->count() || $productData['amount'] <= 0)
             return redirect()->route('home');
 
-        $product = array_merge( $productData, $product -> first(['name', 'price', 'store_id'])->toArray());
+        $product = array_merge( $productData, $product -> first([ 'id', 'name', 'price', 'store_id'])->toArray());
 
 
         //verificar se existe sessão para os produtos

@@ -38,8 +38,8 @@ class CheckoutController extends Controller
             $user = auth()->user();
             $cartItems = session()->get('cart');
             $stores = array_unique(array_column($cartItems, 'store_id'));
-//            $reference = Uuid::uuid4();
-            $reference = 'XPTO';
+            $reference = Uuid::uuid4();
+
 
             $creditCardPayment = new CreditCard($cartItems, $user, $dataPost, $reference);
             $result = $creditCardPayment->doPayment();
@@ -49,7 +49,7 @@ class CheckoutController extends Controller
                 'pagseguro_code' => $result->getCode(),
                 'pagseguro_status' => $result->getStatus(),
                 'items' => serialize($cartItems),
-                'store_id' => 45,  #ignoreline
+                //'store_id' => 45,  #ignoreline
             ];
 
             $userOder = $user->orders()->create($userOder);
@@ -86,33 +86,30 @@ class CheckoutController extends Controller
     }
 
     public function notification(){
-
+        try {
             $notification = new Notification();
             $notification = $notification->getTransaction();
 
-            //Atualizar o pedido do usuario
-//            $userOder = UserOrder::whereReference($notification->getReference());
-            $userOder = UserOrder::where('reference', $notification->getReference())->first()->update(['pagseguro_status' => 3]);
+            $reference = base64_decode($notification->getReference());
 
-            //@TODO  está alteerando o status do pagseguro no banco, verificar o reesto
-            dd($userOder);
-            $userOder->updade([
-                '' => '3'
-            ]);
-
-
+            //Busca a referencia do pedido, busca a ordem com essa referencia
+            $userOder = UserOrder::where('reference',$reference)->first()->update([
+                    //Atualizar o pedido do usuario
+                    'pagseguro_status' => 3]
+            );
 
             //Comentario sobre o pedido pago
             if($notification->getStatus() == 3){
-                //Liberar o pedido do usuario, atualizar o status do pedido para separação
-                //Notificar o usuario que o pedido foi pago
-                //Notificar a loja da confirmação do pedido
+                // @TODO Liberar o pedido do usuario, atualizar o status do pedido para separação
+                // @TODO Notificar o usuario que o pedido foi pago
+                // @TODO Notificar a loja da confirmação do pedido
             }
 
             return response()->json([], 204);
-//        } catch (\Exception $e){
-//            return response()->json([$e->getMessage()], 500);
-//        }
+        } catch (\Exception $e){
+            $message = env('APP_DEBUG')? $e->getMessage():[];
+            return response()->json(['error' => $message], 500);
+        }
     }
 
     private function makePagSeguroSession(){
