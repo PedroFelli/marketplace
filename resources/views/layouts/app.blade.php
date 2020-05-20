@@ -35,6 +35,12 @@
             </ul>
             <div class="my-2 my-lg-0">
                 <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a href="{{route('admin.notifications.index')}}" class="nav-link">
+                            <span class="badge badge-danger">{{auth()->user()->unreadNotifications->count()}}</span>
+                            <i class="fa fa-bell"></i>
+                        </a>
+                    </li>
                     <li class="nav-item ">
                         <a class="nav-link" href="" onclick="
                          event.preventDefault();
@@ -56,7 +62,9 @@
         @include('flash::message')
         @yield('content')
     </div>
-    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
     <script src="{{asset('js/app.js')}}"></script>
+    @yield('scripts')
+
+
 </body>
 </html>

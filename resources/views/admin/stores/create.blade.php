@@ -23,12 +23,22 @@
         </div>
         <div class="form-group">
             <label>Telefone</label>
-            <input type="text" name="phone"  class="form-control @error('phone')is-invalid @enderror" value="{{old('phone')}}">
+            <input type="text" name="phone" id="phone" class="form-control @error('phone')is-invalid @enderror" value="{{old('phone')}}">
 
             @error('phone')
             <div class="invalid-feedback">{{$message}}</div>
             @enderror
         </div>
+
+        <div class="form-group">
+            <label>Celular/Whatsapp</label>
+            <input type="text" name="mobile_phone"  id="mobile_phone" class="form-control @error('mobile_phone')is-invalid @enderror" value="{{old('mobile_phone')}}">
+
+            @error('mobile_phone')
+            <div class="invalid-feedback">{{$message}}</div>
+            @enderror
+        </div>
+
 
         <div class="form-group">
             <label>Foto da Logo</label>
@@ -40,14 +50,6 @@
             @enderror
         </div>
 
-        <div class="form-group">
-            <label>Celular/Whatsapp</label>
-            <input type="text" name="mobile_phone"  class="form-control @error('mobile_phone')is-invalid @enderror" value="{{old('mobile_phone')}}">
-
-            @error('mobile_phone')
-            <div class="invalid-feedback">{{$message}}</div>
-            @enderror
-        </div>
 
 
 
@@ -57,4 +59,16 @@
         </div>
 
     </form>
+@endsection
+@section('scripts')
+
+{{--        //@TODO colocar mascara no input dos telefone na tela do edit--}}
+
+    <script>
+        let imPhone = new Inputmask('(99) 9999-9999');
+        imPhone.mask(document.getElementById('phone'));
+
+        let imMobilePhone = new Inputmask('(99) 99999-9999');
+        imMobilePhone.mask(document.getElementById('mobile_phone'));
+    </script>
 @endsection

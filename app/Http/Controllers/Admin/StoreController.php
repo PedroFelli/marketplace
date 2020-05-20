@@ -31,6 +31,8 @@ class StoreController extends Controller
     }
 
     public  function store(StoreRequest $request){
+
+
         $data = $request->all();
         $user= auth()->user();
 
