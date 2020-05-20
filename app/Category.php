@@ -10,7 +10,7 @@ class Category extends Model
 {
     use HasSlug;
 
-    protected $fillable = ['name', 'description', 'slug'];
+    protected $fillable = ['name', 'description'];
 
     public function getSlugOptions() : SlugOptions
     {
