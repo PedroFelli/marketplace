@@ -27,14 +27,14 @@ class AppServiceProvider extends ServiceProvider
         \PagSeguro\Library::cmsVersion()->setName("Nome")->setRelease("1.0.0");
         \PagSeguro\Library::moduleVersion()->setName("Nome")->setRelease("1.0.0");
 
-     //   $categories = \App\Category::all(['name', 'slug']);
+        $categories = \App\Category::all(['name', 'slug']);
 
 //        view()->share('categories', $categories);
 //        view()->composer('*', function ($view) use ($categories){
 //            $view->with('categories', $categories);
 //        });
 
-       // view()->composer('layouts.front', 'App\Http\Views\CategoryViewComposer@compose');
+        view()->composer('layouts.front', 'App\Http\Views\CategoryViewComposer@compose');
     }
 
 }
