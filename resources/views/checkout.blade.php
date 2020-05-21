@@ -22,6 +22,7 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12 form-group">
+
                         <label>Número do cartão <span class="brand"></span></label>
                         <input type="text" class="form-control "name="card_number">
                         <input type="hidden" name="card_brand">
@@ -70,3 +71,5 @@
     <script src="{{asset('js/pagseguro_events.js')}}"></script>
 
 @endsection
+
+
