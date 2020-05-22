@@ -4,8 +4,118 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d2cb4e25b33efe06979f4a69de314ae7",
+    "content-hash": "4712029380b99502daf54f339ab337bf",
     "packages": [
+        {
+            "name": "components/bootstrap",
+            "version": "3.4.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/components/bootstrap.git",
+                "reference": "427f4d414fc6ae8385aee02b7efc8e391eb141ad"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/components/bootstrap/zipball/427f4d414fc6ae8385aee02b7efc8e391eb141ad",
+                "reference": "427f4d414fc6ae8385aee02b7efc8e391eb141ad",
+                "shasum": ""
+            },
+            "require": {
+                "components/jquery": "1.9.1 - 3"
+            },
+            "suggest": {
+                "components/bootstrap-default": "Provide a theme for Bootstrap as components/bootstrap only provides the CSS as file assets"
+            },
+            "type": "component",
+            "extra": {
+                "component": {
+                    "scripts": [
+                        "js/bootstrap.js"
+                    ],
+                    "files": [
+                        "js/*.js",
+                        "css/*.css",
+                        "css/*.map",
+                        "fonts/*",
+                        "less/mixins/*.less",
+                        "less/*.less"
+                    ],
+                    "shim": {
+                        "deps": [
+                            "jquery"
+                        ]
+                    }
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jacob Thornton",
+                    "email": "jacobthornton@gmail.com"
+                },
+                {
+                    "name": "Mark Otto",
+                    "email": "markdotto@gmail.com"
+                }
+            ],
+            "description": "The most popular front-end framework for developing responsive, mobile first projects on the web.",
+            "homepage": "http://getbootstrap.com",
+            "keywords": [
+                "css",
+                "framework",
+                "front-end",
+                "less",
+                "mobile-first",
+                "responsive",
+                "web"
+            ],
+            "time": "2019-05-08T19:36:29+00:00"
+        },
+        {
+            "name": "components/jquery",
+            "version": "3.5.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/components/jquery.git",
+                "reference": "b33e8f0f9a1cb2ae390cf05d766a900b53d2125b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/components/jquery/zipball/b33e8f0f9a1cb2ae390cf05d766a900b53d2125b",
+                "reference": "b33e8f0f9a1cb2ae390cf05d766a900b53d2125b",
+                "shasum": ""
+            },
+            "type": "component",
+            "extra": {
+                "component": {
+                    "scripts": [
+                        "jquery.js"
+                    ],
+                    "files": [
+                        "jquery.min.js",
+                        "jquery.min.map",
+                        "jquery.slim.js",
+                        "jquery.slim.min.js",
+                        "jquery.slim.min.map"
+                    ]
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "JS Foundation and other contributors"
+                }
+            ],
+            "description": "jQuery JavaScript Library",
+            "homepage": "http://jquery.com",
+            "time": "2020-05-05T13:21:02+00:00"
+        },
         {
             "name": "dnoegel/php-xdg-base-dir",
             "version": "v0.1.1",
@@ -231,6 +341,85 @@
                 "schedule"
             ],
             "time": "2019-03-31T00:38:28+00:00"
+        },
+        {
+            "name": "drmonty/animate.css",
+            "version": "3.5.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mrohnstock/animate.css.git",
+                "reference": "ae9cba67bb4b31fbb63b6df17416fdcd697e3325"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mrohnstock/animate.css/zipball/ae9cba67bb4b31fbb63b6df17416fdcd697e3325",
+                "reference": "ae9cba67bb4b31fbb63b6df17416fdcd697e3325",
+                "shasum": ""
+            },
+            "require": {
+                "robloach/component-installer": "*"
+            },
+            "type": "component",
+            "extra": {
+                "component": {
+                    "files": [
+                        "css/animate.css",
+                        "css/animate.min.css"
+                    ]
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "A cross-browser library of CSS animations. As easy to use as an easy thing.",
+            "homepage": "http://daneden.github.io/animate.css",
+            "time": "2016-06-07T06:29:18+00:00"
+        },
+        {
+            "name": "drmonty/animsition",
+            "version": "4.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mrohnstock/animsition.git",
+                "reference": "fd8228e5615594a739ccfb2e40ae392f0b34d2e6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mrohnstock/animsition/zipball/fd8228e5615594a739ccfb2e40ae392f0b34d2e6",
+                "reference": "fd8228e5615594a739ccfb2e40ae392f0b34d2e6",
+                "shasum": ""
+            },
+            "require": {
+                "components/jquery": ">= 1.11.0"
+            },
+            "type": "component",
+            "extra": {
+                "component": {
+                    "scripts": [
+                        "js/animsition.js",
+                        "js/animsition.min.js"
+                    ],
+                    "files": [
+                        "css/animsition.css",
+                        "css/animsition.min.css",
+                        "js/animsition.js",
+                        "js/animsition.min.js"
+                    ],
+                    "shim": {
+                        "deps": [
+                            "jquery"
+                        ]
+                    }
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "A simple and easy jQuery plugin for CSS animated page transitions.",
+            "homepage": "http://git.blivesta.com/animsition",
+            "time": "2016-04-27T06:20:07+00:00"
         },
         {
             "name": "egulias/email-validator",
@@ -532,6 +721,49 @@
                 "url"
             ],
             "time": "2019-07-01T23:21:34+00:00"
+        },
+        {
+            "name": "kriswallsmith/assetic",
+            "version": "v1.0.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kriswallsmith/assetic.git",
+                "reference": "8ab3638325af9cd144242765494a9dc9b53ab430"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kriswallsmith/assetic/zipball/8ab3638325af9cd144242765494a9dc9b53ab430",
+                "reference": "8ab3638325af9cd144242765494a9dc9b53ab430",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Assetic": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kris Wallsmith",
+                    "email": "kris.wallsmith@gmail.com",
+                    "homepage": "http://kriswallsmith.net/"
+                }
+            ],
+            "description": "Asset Management for PHP",
+            "homepage": "https://github.com/kriswallsmith/assetic",
+            "keywords": [
+                "assets",
+                "compression",
+                "minification"
+            ],
+            "time": "2014-12-12T05:07:58+00:00"
         },
         {
             "name": "laracasts/flash",
@@ -1127,6 +1359,60 @@
                 }
             ],
             "time": "2020-05-18T15:13:39+00:00"
+        },
+        {
+            "name": "moment/moment",
+            "version": "2.25.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/moment/moment.git",
+                "reference": "1872bb22ff6cd19c56e7dc30c5765489d48e65f1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/moment/moment/zipball/1872bb22ff6cd19c56e7dc30c5765489d48e65f1",
+                "reference": "1872bb22ff6cd19c56e7dc30c5765489d48e65f1",
+                "shasum": ""
+            },
+            "require": {
+                "robloach/component-installer": "*"
+            },
+            "type": "component",
+            "extra": {
+                "component": {
+                    "scripts": [
+                        "moment.js"
+                    ],
+                    "files": [
+                        "min/*.js",
+                        "locale/*.js"
+                    ]
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Tim Wood",
+                    "email": "washwithcare@gmail.com"
+                }
+            ],
+            "description": "Parse, validate, manipulate, and display dates in JavaScript.",
+            "homepage": "https://github.com/moment/moment",
+            "keywords": [
+                "date",
+                "ender",
+                "format",
+                "i18n",
+                "l10n",
+                "moment",
+                "parse",
+                "time",
+                "validate"
+            ],
+            "time": "2020-05-04T15:09:59+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -1943,6 +2229,46 @@
             "time": "2020-03-21T18:07:53+00:00"
         },
         {
+            "name": "pnikolov/bootstrap-daterangepicker",
+            "version": "2.1.25",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/pnikolov/bootstrap-daterangepicker.git",
+                "reference": "b94633ef18ae1ce12ad201337c1ba98c2b941716"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/pnikolov/bootstrap-daterangepicker/zipball/b94633ef18ae1ce12ad201337c1ba98c2b941716",
+                "reference": "b94633ef18ae1ce12ad201337c1ba98c2b941716",
+                "shasum": ""
+            },
+            "require": {
+                "components/bootstrap": "3.x",
+                "components/jquery": ">=1.10",
+                "moment/moment": ">=2.9.0"
+            },
+            "type": "component",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Dan Grossman",
+                    "email": "dan@dangrossman.info",
+                    "role": "Author"
+                }
+            ],
+            "description": "Slim wrapper of Bootstrap Date range picker.",
+            "homepage": "http://www.daterangepicker.com",
+            "keywords": [
+                "bootstrap component",
+                "date picker",
+                "date range picker"
+            ],
+            "time": "2017-11-06T10:03:32+00:00"
+        },
+        {
             "name": "psr/container",
             "version": "1.0.0",
             "source": {
@@ -2435,6 +2761,55 @@
                 "uuid"
             ],
             "time": "2020-02-21T04:36:14+00:00"
+        },
+        {
+            "name": "robloach/component-installer",
+            "version": "0.2.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/RobLoach/component-installer.git",
+                "reference": "908a859aa7c4949ba9ad67091e67bac10b66d3d7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/RobLoach/component-installer/zipball/908a859aa7c4949ba9ad67091e67bac10b66d3d7",
+                "reference": "908a859aa7c4949ba9ad67091e67bac10b66d3d7",
+                "shasum": ""
+            },
+            "require": {
+                "composer-plugin-api": "^1.0",
+                "kriswallsmith/assetic": "1.*",
+                "php": ">=5.3.2"
+            },
+            "require-dev": {
+                "composer/composer": "1.*@alpha",
+                "phpunit/phpunit": "4.*"
+            },
+            "type": "composer-plugin",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                },
+                "class": "ComponentInstaller\\ComponentInstallerPlugin"
+            },
+            "autoload": {
+                "psr-0": {
+                    "ComponentInstaller": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Rob Loach",
+                    "homepage": "http://robloach.net"
+                }
+            ],
+            "description": "Allows installation of Components via Composer.",
+            "abandoned": "oomphinc/composer-installers-extender",
+            "time": "2015-08-10T12:35:38+00:00"
         },
         {
             "name": "spatie/laravel-sluggable",

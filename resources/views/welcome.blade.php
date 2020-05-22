@@ -1,118 +1,301 @@
 @extends('layouts.front')
 
 @section('content')
-    <div class="class-md-12">
-        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-            <ol class="carousel-indicators">
-                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-            </ol>
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <svg class="bd-placeholder-img bd-placeholder-img-lg d-block w-100" width="800" height="400"
-                         xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false"
-                         role="img" aria-label="Placeholder: First slide">
-                        <title>
-                            Placeholder
-                        </title>
-                        <rect width="100%" height="100%" fill="#777">
+    <section class="section-slide">
+        <div class="wrap-slick1">
+            <div class="slick1">
+                <div class="item-slick1" style="background-image: url(images/slide-01.jpg);">
+                    <div class="container h-full">
+                        <div class="flex-col-l-m h-full p-t-100 p-b-30 respon5">
+                            <div class="layer-slick1 animated visible-false" data-appear="fadeInDown" data-delay="0">
+								<span class="ltext-101 cl2 respon2">
+									Women Collection 2018
+								</span>
+                            </div>
 
-                        </rect><text x="50%" y="50%" fill="#555" dy=".3em">
-                            First slide
-                        </text>
-                    </svg>
+                            <div class="layer-slick1 animated visible-false" data-appear="fadeInUp" data-delay="800">
+                                <h2 class="ltext-201 cl2 p-t-19 p-b-43 respon1">
+                                    NEW SEASON
+                                </h2>
+                            </div>
+
+                            <div class="layer-slick1 animated visible-false" data-appear="zoomIn" data-delay="1600">
+                                <a href="product.html" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
+                                    Shop Now
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="carousel-item">
-                    <svg class="bd-placeholder-img bd-placeholder-img-lg d-block w-100" width="800" height="400"
-                         xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false"
-                         role="img" aria-label="Placeholder: First slide">
-                        <title>
-                            Placeholder
-                        </title>
-                        <rect width="100%" height="100%" fill="#777">
 
-                        </rect><text x="50%" y="50%" fill="#555" dy=".3em">
-                            First slide
-                        </text>
-                    </svg>
+                <div class="item-slick1" style="background-image: url(images/slide-02.jpg);">
+                    <div class="container h-full">
+                        <div class="flex-col-l-m h-full p-t-100 p-b-30 respon5">
+                            <div class="layer-slick1 animated visible-false" data-appear="rollIn" data-delay="0">
+								<span class="ltext-101 cl2 respon2">
+									Men New-Season
+								</span>
+                            </div>
+
+                            <div class="layer-slick1 animated visible-false" data-appear="lightSpeedIn" data-delay="800">
+                                <h2 class="ltext-201 cl2 p-t-19 p-b-43 respon1">
+                                    Jackets & Coats
+                                </h2>
+                            </div>
+
+                            <div class="layer-slick1 animated visible-false" data-appear="slideInUp" data-delay="1600">
+                                <a href="product.html" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
+                                    Shop Now
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="carousel-item">
-                    <svg class="bd-placeholder-img bd-placeholder-img-lg d-block w-100" width="800" height="400"
-                         xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false"
-                         role="img" aria-label="Placeholder: First slide">
-                        <title>
-                            Placeholder
-                        </title>
-                        <rect width="100%" height="100%" fill="#777">
 
-                        </rect><text x="50%" y="50%" fill="#555" dy=".3em">
-                            First slide
-                        </text>
-                    </svg>
+                <div class="item-slick1" style="background-image: url(images/slide-03.jpg);">
+                    <div class="container h-full">
+                        <div class="flex-col-l-m h-full p-t-100 p-b-30 respon5">
+                            <div class="layer-slick1 animated visible-false" data-appear="rotateInDownLeft" data-delay="0">
+								<span class="ltext-101 cl2 respon2">
+									Men Collection 2018
+								</span>
+                            </div>
+
+                            <div class="layer-slick1 animated visible-false" data-appear="rotateInUpRight" data-delay="800">
+                                <h2 class="ltext-201 cl2 p-t-19 p-b-43 respon1">
+                                    New arrivals
+                                </h2>
+                            </div>
+
+                            <div class="layer-slick1 animated visible-false" data-appear="rotateIn" data-delay="1600">
+                                <a href="product.html" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
+                                    Shop Now
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
         </div>
-    </div>
-
-
-<div class="row ">
-
-
-
-        @foreach($products as $key => $product)
-        <div class="col-md-4 front">
-            <div class="card" style="width: 95%;">
-                @if($product->photos->count())
-                    <img src="{{asset('storage/'.$product->photos->first()->image)}}" alt="" class="card-img-top">
-                @else
-                    <img src="{{asset('assets/img/no-photo.jpg')}}" alt="" class="card-img-top">
-                @endif
-                <div class="card-body">
-                    <h2 class="clard-title">{{$product->name}}</h2>
-                    <p class="clas-text">
-                        {{$product->description}}
-                    </p>
-                    <h3>
-                        R${{number_format($product->price, '2', ',', '.')}}
-                    </h3>
-                    <a href="{{route('product.single', ['slug' => $product->slug])}}" class="btn btn-success">
-                        Ver Produto
-                    </a>
-                </div>
+    </section>
+    <!-- Product -->
+    <section class="bg0 p-t-23 p-b-140">
+        <div class="container">
+            <div class="p-b-10">
+              <h3>Lançamentos</h3>
             </div>
 
-        @if(($key + 1) % 3 == 0) </div> <div class="row "> <br>@endif
+            <div class="row isotope-grid">
 
-        </div>
-        @endforeach
-        <div class="row">
-            <div class="col-12">
-                <h2>Loja Destaque</h2>
-                <hr>
-            </div>
-           @foreach($stores as $store)
-                <div class="col-4">
-                    @if($store->logo)
-                        <img src="{{asset('storage/'.$store->logo)}}" alt="Logo da loja{{$store->name}}" class="img-fluid">
-                    @else
-                        <img src="https://via.placeholder.com/600X300.png?text=logo" alt="Loja sem logo" class="img-fluid">
-                    @endif
-                    <h3>{{$store->name}}</h3>
-                    <p>{{$store->description}}</p>
-                        <a href="{{route('store.single', ['slug' => $store->slug])}}" class="btn btn-sm btn-success">Ver Loja</a>
-                </div>
+
+                @foreach($products as $key => $product)
+                    <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item">
+                        <div class="block2">
+                            <div class="block2-pic hov-img0">
+                                @if($product->photos->count())
+                                    <img src="{{asset('storage/'.$product->photos->first()->image)}}" alt="IMG-PRODUCT">
+                                @else
+                                    <img src="{{asset('assets/img/no-photo.jpg')}}" alt="" class="card-img-top">
+                                @endif
+                                <a href="{{route('product.single', ['slug' => $product->slug])}}" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+                                    Ver Produto
+                                </a>
+                            </div>
+                            <div class="block2-txt flex-w flex-t p-t-14">
+                                <div class="block2-txt-child1 flex-col-l ">
+                                    <a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+                                        {{$product->name}}
+                                    </a>
+
+                                    <span class="stext-105 cl3">
+          R${{number_format($product->price, '2', ',', '.')}}
+        </span>
+                                </div>
+
+                                <div class="block2-txt-child2 flex-r p-t-3">
+                                    <a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
+                                        <img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png" alt="ICON">
+                                        <img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
             @endforeach
-        </div>
 
-</div>
+                <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
+                    <!-- Block2 -->
+                    <div class="block2">
+                        <div class="block2-pic hov-img0">
+                            <img src="images/product-02.jpg" alt="IMG-PRODUCT">
+
+                            <a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+                                Quick View
+                            </a>
+                        </div>
+
+                        <div class="block2-txt flex-w flex-t p-t-14">
+                            <div class="block2-txt-child1 flex-col-l ">
+                                <a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+                                    Herschel supply
+                                </a>
+
+                                <span class="stext-105 cl3">
+									$35.31
+								</span>
+                            </div>
+
+                            <div class="block2-txt-child2 flex-r p-t-3">
+                                <a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
+                                    <img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png" alt="ICON">
+                                    <img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item men">
+                    <!-- Block2 -->
+                    <div class="block2">
+                        <div class="block2-pic hov-img0">
+                            <img src="images/product-03.jpg" alt="IMG-PRODUCT">
+
+                            <a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+                                Quick View
+                            </a>
+                        </div>
+
+                        <div class="block2-txt flex-w flex-t p-t-14">
+                            <div class="block2-txt-child1 flex-col-l ">
+                                <a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+                                    Only Check Trouser
+                                </a>
+
+                                <span class="stext-105 cl3">
+									$25.50
+								</span>
+                            </div>
+
+                            <div class="block2-txt-child2 flex-r p-t-3">
+                                <a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
+                                    <img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png" alt="ICON">
+                                    <img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
+                    <!-- Block2 -->
+                    <div class="block2">
+                        <div class="block2-pic hov-img0">
+                            <img src="images/product-04.jpg" alt="IMG-PRODUCT">
+
+                            <a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+                                Quick View
+                            </a>
+                        </div>
+
+                        <div class="block2-txt flex-w flex-t p-t-14">
+                            <div class="block2-txt-child1 flex-col-l ">
+                                <a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+                                    Classic Trench Coat
+                                </a>
+
+                                <span class="stext-105 cl3">
+									$75.00
+								</span>
+                            </div>
+
+                            <div class="block2-txt-child2 flex-r p-t-3">
+                                <a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
+                                    <img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png" alt="ICON">
+                                    <img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
+                    <!-- Block2 -->
+                    <div class="block2">
+                        <div class="block2-pic hov-img0">
+                            <img src="images/product-04.jpg" alt="IMG-PRODUCT">
+
+                            <a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+                                Quick View
+                            </a>
+                        </div>
+
+                        <div class="block2-txt flex-w flex-t p-t-14">
+                            <div class="block2-txt-child1 flex-col-l ">
+                                <a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+                                    Classic Trench Coat
+                                </a>
+
+                                <span class="stext-105 cl3">
+									$75.00
+								</span>
+                            </div>
+
+                            <div class="block2-txt-child2 flex-r p-t-3">
+                                <a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
+                                    <img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png" alt="ICON">
+                                    <img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
+                    <!-- Block2 -->
+                    <div class="block2">
+                        <div class="block2-pic hov-img0">
+                            <img src="images/product-04.jpg" alt="IMG-PRODUCT">
+
+                            <a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+                                Quick View
+                            </a>
+                        </div>
+
+                        <div class="block2-txt flex-w flex-t p-t-14">
+                            <div class="block2-txt-child1 flex-col-l ">
+                                <a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+                                    Classic Trench Coat
+                                </a>
+
+                                <span class="stext-105 cl3">
+									$75.00
+								</span>
+                            </div>
+
+                            <div class="block2-txt-child2 flex-r p-t-3">
+                                <a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
+                                    <img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png" alt="ICON">
+                                    <img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Load more -->
+            <div class="flex-c-m flex-w w-full p-t-45">
+                <a href="#" class="flex-c-m stext-101 cl5 size-103 bg2 bor1 hov-btn1 p-lr-15 trans-04">
+                    Load More
+                </a>
+            </div>
+        </div>
+    </section>
+
 
 @endsection

@@ -109,6 +109,14 @@
       <path value="$PROJECT_DIR$/vendor/ralouphie/getallheaders" />
       <path value="$PROJECT_DIR$/vendor/zendframework/zend-diactoros" />
       <path value="$PROJECT_DIR$/vendor/laravel/nexmo-notification-channel" />
+      <path value="$PROJECT_DIR$/vendor/robloach/component-installer" />
+      <path value="$PROJECT_DIR$/vendor/kriswallsmith/assetic" />
+      <path value="$PROJECT_DIR$/vendor/drmonty/animate.css" />
+      <path value="$PROJECT_DIR$/vendor/components/jquery" />
+      <path value="$PROJECT_DIR$/vendor/drmonty/animsition" />
+      <path value="$PROJECT_DIR$/vendor/moment/moment" />
+      <path value="$PROJECT_DIR$/vendor/components/bootstrap" />
+      <path value="$PROJECT_DIR$/vendor/pnikolov/bootstrap-daterangepicker" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.2" />

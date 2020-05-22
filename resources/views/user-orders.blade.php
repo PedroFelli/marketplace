@@ -1,10 +1,12 @@
 @extends('layouts.front')
 
 @section('content')
+    <div class="container bg0 p-t-75 p-b-85">
     <div class="row">
         <div class="col-12">
-            <h2>Meus Pedidos</h2>
             <hr>
+            <h2>Meus Pedidos</h2>
+
             <div class="col-12">
             </div>
         </div>
@@ -14,9 +16,8 @@
                         <div class="card">
                             <div class="card-header" id="headingOne">
                                 <strong class="mb-0 ">
-                                    Pedido n°: {{$order->reference}}
-                                    <button class="btn btn-info float-right" type="button" data-toggle="collapse" data-target="#collapse{{$key}}" aria-expanded="true" aria-controls="collapseOne">
-                                        <i class="fa fa-plus"></i>
+                                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse{{$key}}" aria-expanded="true" aria-controls="collapseOne">
+                                        Pedido n°: {{$order->reference}}
                                     </button>
                                 </strong>
                             </div>
@@ -72,7 +73,7 @@
         <hr>
         {{$userOders->links()}}
     </div>
-
+    </div>
 @endsection
 {{--<div class="row">--}}
 {{--    <div class="col-12">--}}

@@ -10,13 +10,13 @@
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="margin-bottom: 40px;" >
-        <a class="navbar-brand" href="{{route('home')}}">Marktplace</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="margin-bottom: 40px;" >
+    <a class="navbar-brand" href="{{route('home')}}">Marktplace</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
 
-        @auth()
+    @auth()
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item @if(request()->is('admin/orders/my*')) active @endif ">
@@ -57,13 +57,13 @@
             </div>
             @endauth
         </div>
-    </nav>
-    <div class="container">
-        @include('flash::message')
-        @yield('content')
-    </div>
-    <script src="{{asset('js/app.js')}}"></script>
-    @yield('scripts')
+</nav>
+<div class="container">
+    @include('flash::message')
+    @yield('content')
+</div>
+<script src="{{asset('js/app.js')}}"></script>
+@yield('scripts')
 
 
 </body>

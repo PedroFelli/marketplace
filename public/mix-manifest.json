@@ -2,5 +2,18 @@
     "/js/app.js": "/js/app.js",
     "/css/app.css": "/css/app.css",
     "/js/pagseguro_functions.js": "/js/pagseguro_functions.js",
+    "/js/jquery-3.2.1.min.js": "/js/jquery-3.2.1.min.js",
+    "/js/animsition.min.js": "/js/animsition.min.js",
+    "/js/popper.js": "/js/popper.js",
+    "/js/bootstrap.min.js": "/js/bootstrap.min.js",
+    "/js/select2.min.js": "/js/select2.min.js",
+    "/js/moment.min.js": "/js/moment.min.js",
+    "/js/daterangepicker.js": "/js/daterangepicker.js",
+    "/js/slick.min.js": "/js/slick.min.js",
+    "/js/parallax100.js": "/js/parallax100.js",
+    "/js/jquery.magnific-popup.min.js": "/js/jquery.magnific-popup.min.js",
+    "/js/isotope.pkgd.min.js": "/js/isotope.pkgd.min.js",
+    "/js/sweetalert.min.js": "/js/sweetalert.min.js",
+    "/js/perfect-scrollbar.min.js": "/js/perfect-scrollbar.min.js",
     "/js/pagseguro_events.js": "/js/pagseguro_events.js"
 }
