@@ -72,7 +72,8 @@
             "chmod -R 777 public/",
             "chmod -R 777 public/vendor",
             "chmod -R 777 public/css",
-            "chmod -R 777 public/js"
+            "chmod -R 777 public/js",
+            "chmod -R 775 storage"
 
         ]
     }
