@@ -22,30 +22,24 @@
                             <tr class="table_row">
                                 <td class="column-1">
                                     <div class="how-itemcart1">
-                                        <img src="images/item-cart-04.jpg" alt="IMG">
+                                        <img src="{{asset('storage/'.$c['photo'])}}" alt="IMG">
                                     </div>
                                 </td>
                                 <td class="column-2">{{$c['name']}}</td>
                                 <td class="column-3">R$ {{number_format(($c['price']),2 ,',','.')}}</td>
-                                <td class="column-4">
-                                    <div class="wrap-num-product flex-w m-l-auto m-r-0">
-                                        <div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
-                                            <i class="fs-16 zmdi zmdi-minus"></i>
-                                        </div>
+                                <td class="column-4">{{$c['amount']}}</td>
 
-                                        <input class="mtext-104 cl3 txt-center num-product" type="number" name="num-product1" value="1">
-
-                                        <div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
-                                            <i class="fs-16 zmdi zmdi-plus"></i>
-                                        </div>
-                                    </div>
+                                <td class="column-5">
+                                    <a href="{{route('cart.remove', ['slug' => $c['slug']])}}" class="btn btn-sm btn-danger">
+                                        Remover
+                                    </a>
                                 </td>
-                                <td class="column-5">{{$c['amount']}}</td>
+
                                 @php
                                     $subtotal = $c['price'] * $c['amount'];
                                     $total += $subtotal;
                                 @endphp
-                                <td>R$ {{number_format(($c['price']*$c['amount']),2 ,',','.')}}</td>
+                                <td class="column-5">R$ {{number_format(($c['price']*$c['amount']),2 ,',','.')}}</td>
                             </tr>
                             @endforeach
 

@@ -7,7 +7,7 @@
     <!--===============================================================================================-->
     <link rel="icon" type="image/png" href="{{ asset('images/icons/favicon.png')}}"/>
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('vendor/bootstrap/css/bootstrap.min.css')}}">
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="{{ asset('fonts/font-awesome-4.7.0/css/font-awesome.min.css')}}">
     <!--===============================================================================================-->
@@ -47,7 +47,7 @@
             <nav class="limiter-menu-desktop p-l-45">
 
                 <!-- Logo desktop -->
-                <a href="#" class="logo">
+                <a href="/home" class="logo">
                     <h1>Mally</h1>
                 </a>
 
@@ -102,7 +102,7 @@
     <div class="wrap-header-mobile">
         <!-- Logo moblie -->
         <div class="logo-mobile">
-            <a href="/">
+            <a href="/home">
                 Mally
             </a>
         </div>

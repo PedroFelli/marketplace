@@ -95,6 +95,11 @@
 
                                     <div class="product-add col-md-12">
 
+                                        @if($product->photos->count())
+                                            <input type="text" name="product[photo]" value="{{$product->photos->first()->image}}" hidden>
+                                        @else
+                                            <input type="text" name="product[photo]" value="{{asset('assets/img/no-photo.jpg')}}" hidden>
+                                        @endif
                                             <input type="text" name="product[name]" value="{{$product->name}}" hidden>
                                             <input type="text" name="product[price]" value="{{$product->price}}" hidden>
                                             <input type="text" name="product[slug]"  value="{{$product->slug}}" hidden>
