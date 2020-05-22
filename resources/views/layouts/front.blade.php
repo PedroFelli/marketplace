@@ -79,9 +79,13 @@
                     </div>
 
                     <div class="flex-c-m h-full p-l-18 p-r-25 bor5">
-                        <div class="icon-header-item cl2 hov-cl1 trans-04 p-lr-11 icon-header-noti js-show-cart" data-notify="2">
-                            <i class="zmdi zmdi-shopping-cart"></i>
-                        </div>
+                        <a href="/cart">
+                                @if(session()->has('cart'))
+                                <div class="icon-header-item cl2 hov-cl1 trans-04 p-lr-11 icon-header-noti " data-notify="{{array_sum(array_column(session()->get('cart'),'amount'))}}">
+                                @endif
+                                <i class="zmdi zmdi-shopping-cart"></i>
+                            </div>
+                        </a>
                     </div>
 
                     <div class="flex-c-m h-full p-lr-19">
@@ -98,7 +102,9 @@
     <div class="wrap-header-mobile">
         <!-- Logo moblie -->
         <div class="logo-mobile">
-            <a href="/"><img src="images/icons/logo-01.png" alt="IMG-LOGO"></a>
+            <a href="/">
+                Mally
+            </a>
         </div>
 
         <!-- Icon header -->
@@ -253,7 +259,10 @@
 <!-- Slider -->
 
 <div class="">
-    @include('flash::message')
+    <div class="col-8" style="margin: auto;">
+        @include('flash::message')
+    </div>
+
     @yield('content')
 </div>
 <footer class="bg3 p-t-75 p-b-32">
@@ -428,9 +437,9 @@
                             <div class="slick3 gallery-lb">
                                 <div class="item-slick3" data-thumb="images/product-detail-01.jpg">
                                     <div class="wrap-pic-w pos-relative">
-                                        <img src="images/product-detail-01.jpg" alt="IMG-PRODUCT">
+                                        <img src="/images/product-detail-01.jpg" alt="IMG-PRODUCT">
 
-                                        <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="images/product-detail-01.jpg">
+                                        <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="/images/product-detail-01.jpg">
                                             <i class="fa fa-expand"></i>
                                         </a>
                                     </div>
@@ -438,9 +447,9 @@
 
                                 <div class="item-slick3" data-thumb="images/product-detail-02.jpg">
                                     <div class="wrap-pic-w pos-relative">
-                                        <img src="images/product-detail-02.jpg" alt="IMG-PRODUCT">
+                                        <img src="/images/product-detail-02.jpg" alt="IMG-PRODUCT">
 
-                                        <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="images/product-detail-02.jpg">
+                                        <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="/images/product-detail-02.jpg">
                                             <i class="fa fa-expand"></i>
                                         </a>
                                     </div>
@@ -448,9 +457,9 @@
 
                                 <div class="item-slick3" data-thumb="images/product-detail-03.jpg">
                                     <div class="wrap-pic-w pos-relative">
-                                        <img src="images/product-detail-03.jpg" alt="IMG-PRODUCT">
+                                        <img src="/images/product-detail-03.jpg" alt="IMG-PRODUCT">
 
-                                        <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="images/product-detail-03.jpg">
+                                        <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="/images/product-detail-03.jpg">
                                             <i class="fa fa-expand"></i>
                                         </a>
                                     </div>
@@ -528,7 +537,7 @@
                                         </div>
                                     </div>
 
-                                    <button class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
+                                    <button class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
                                         Add to cart
                                     </button>
                                 </div>
@@ -585,7 +594,8 @@
 <script src="{{asset('js/moment.min.js')}}"></script>
 <script src="{{asset('js/daterangepicker.js')}}"></script>
 <!--===============================================================================================-->
-<script src="{{asset('js/slick.min.js')}}"></script>
+
+<script src="{{asset('vendor/slick/slick.min.js')}}"></script>
 <script src="{{asset('js/slick-custom.js')}}"></script>
 <!--===============================================================================================-->
 <script src="{{asset('js/parallax100.js')}}"></script>
@@ -641,7 +651,7 @@
     $('.js-addcart-detail').each(function(){
         var nameProduct = $(this).parent().parent().parent().parent().find('.js-name-detail').html();
         $(this).on('click', function(){
-            swal(nameProduct, "is added to cart !", "success");
+            swal(nameProduct, "adicionado ao carrinho!", "success");
         });
     });
 
