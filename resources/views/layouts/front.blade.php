@@ -170,7 +170,18 @@
                     </form>
                 </li>
             @endauth
-
+            @guest
+                <li  >
+                    <a href="{{route('login')}}" >
+                        Login
+                    </a>
+                </li>
+                <li  >
+                    <a href="{{route('register')}}" >
+                        Registrar
+                    </a>
+                </li>
+            @endguest
             <li>
                 <a href="/">Loja</a>
             </li>
@@ -235,7 +246,7 @@
                         </form>
                     </li>
                     @endauth
-                @if(@auth)
+                @guest
                     <li class="p-b-13" >
                         <a class="stext-102 cl2 hov-cl1 trans-04" href="{{route('login')}}" >
                             Login
@@ -246,10 +257,9 @@
                             Registrar
                         </a>
                     </li>
-                @else
+                @endguest
 
 
-                @endif
                 <li class="p-b-13">
                     <a class="stext-102 cl2 hov-cl1 trans-04" href="/">Loja</a>
                 </li>
