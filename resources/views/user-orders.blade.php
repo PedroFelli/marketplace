@@ -9,7 +9,7 @@
 
             <div class="col-12">
             </div>
-010,        </div>
+            </div>
             @forelse($userOders as $key => $order)
                 <div class="col-12">
                     <div class="accordion" id="accordionExample">
@@ -24,21 +24,48 @@
                             <div id="collapse{{$key}}" class="collapse @if($key == 0) show @endif " aria-labelledby="headingOne" data-parent="#accordionExample">
                                 <div class="card-body">
                                     <div class="row">
-                                        <div class="col-sm">
+                                        <div class="col-md-6">
                                             <strong>Status do Pedido:</strong>
-                                                @if($order->pagseguro_status == 3)
+                                                @if($order->pedido_status == 1)
+                                                Processando
                                                 <div class="progress" style="margin-bottom: 5px;">
-                                                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width: 25%"></div>
+                                                    <div class="progress-bar progress-bar-striped progress-bar-animated bg-warning" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%"></div>
                                                 </div>
-                                                    <p><strong>Status do pagamento:</strong> Em Análise</p>
-                                                @else ($order->pagseguro_status == 1)
+                                                @elseif ($order->pedido_status == 2)
+                                                Aguardando pagamento
                                                 <div class="progress" style="margin-bottom: 5px;">
-                                                    <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 50%"></div>
+                                                    <div class="progress-bar progress-bar-striped progress-bar-animated bg-info" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 50%"></div>
                                                 </div>
-                                                <p><strong>Status do pagamento:</strong> Completo</p>
+                                                @elseif ($order->pedido_status == 3)
+                                                Em separação
+                                                <div class="progress" style="margin-bottom: 5px;">
+                                                    <div class="progress-bar progress-bar-striped progress-bar-animated bg-info" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
+                                                </div>
+                                                @elseif ($order->pedido_status == 4)
+                                                Enviado
+                                                <div class="progress" style="margin-bottom: 5px;">
+                                                    <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
+                                                </div>
                                                 @endif
+                                                @if ($order->pedido_status == 1)
+                                                <p><strong>Status do Pagamento:</strong> Aguardando PagSeguro</p>
+                                                @elseif($order->pedido_status == 2)
+                                                <p><strong>Status do Pagamento:</strong> Em análise</p>
+                                                @elseif($order->pedido_status == 3)
+                                                <p><strong>Status do Pagamento:</strong> Pago</p>
+                                                @elseif($order->pedido_status == 4)
+                                                <p><strong>Status do Pagamento:</strong> Disponível</p>
+                                                @elseif($order->pedido_status == 5)
+                                                <p><strong>Status do Pagamento:</strong> Em disputa</p>
+                                                @elseif($order->pedido_status == 6)
+                                                <p><strong>Status do Pagamento:</strong> Devolvida</p>
+                                                @elseif($order->pedido_status == 7)
+                                                <p><strong>Status do Pagamento:</strong> Cancelada</p>
+                                                @endif
+
                                         </div>
-                                        <div class="col-sm">
+
+                                        <div class="col-md-3">
                                             @php
                                                 $items = unserialize($order->items);
                                                 $total = 0;
@@ -54,7 +81,7 @@
                                                 @endphp
                                             @endforeach
                                         </div>
-                                        <div class="col-sm">
+                                        <div class="col-md-3">
                                             <p> Data do pedido: {{$order->created_at->format('d-m-Y')}}</p>
                                             <p>Valor do pedido: {{$total}}</p>
                                         </div>

@@ -25,20 +25,35 @@ let submitButton = document.querySelector('button.processCheckout');
 
 submitButton.addEventListener('click', function (event) {
     event.preventDefault();
-    PagSeguroDirectPayment.createCardToken({
-        cardNumber:         document.querySelector('input[name=card_number]').value,
-        brand:              document.querySelector('input[name=card_brand]').value,
-        cvv:                document.querySelector('input[name=card_cvv]').value,
-        expirationMonth:    document.querySelector('input[name=card_month]').value,
-        expirationYear:     document.querySelector('input[name=card_year]').value,
-        success: function (res) {
-            console.log(res);
-            proccessPayment(res.card.token)
+    $(".processCheckout").addClass('d-none');
+    $("#spinner-pag").removeClass('d-none');
 
-        },
 
-        error: function (err) {
-            console.log(err)
-        },
-    })
+    try {
+        PagSeguroDirectPayment.createCardToken({
+            cardNumber:         document.querySelector('input[name=card_number]').value,
+            brand:              document.querySelector('input[name=card_brand]').value,
+            cvv:                document.querySelector('input[name=card_cvv]').value,
+            expirationMonth:    document.querySelector('input[name=card_month]').value,
+            expirationYear:     document.querySelector('input[name=card_year]').value,
+            success: function (res) {
+                console.log(res);
+                proccessPayment(res.card.token);
+            },
+
+            error: function (err) {
+                var msg = "Ops, tivemos um erro com o seu pagamento, confira seus dados";
+                console.log(err.errors);
+                toast.error(msg, 5000);
+                $('.alert').alert()
+                $(".processCheckout").removeClass('d-none');
+                $("#spinner-pag").addClass('d-none');
+            },
+        })
+    }
+    catch (e) {
+       console.log(e.errors);
+    }
+
 })
+
