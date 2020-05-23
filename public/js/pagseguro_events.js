@@ -6,10 +6,9 @@ cardNumber.addEventListener('keyup', function () {
         PagSeguroDirectPayment.getBrand({
             cardBin: cardNumber.value.substr(0,6),
             success: function (res) {
-                let imgFlag = `<img src="https://stc.pagseguro.uol.com.br/public/img/payment-methods-flags/68x30/${res.brand.name}.png">`
+                let imgFlag = `<img src="https://stc.pagseguro.uol.com.br/public/img/payment-methods-flags/68x30/${res.brand.name}.png" style="height: 22px;">`
                 spanBrand.innerHTML = imgFlag;
                 document.querySelector('input[name=card_brand]').value = res.brand.name;
-
                 getInstallments(amountTransaction, res.brand.name);
             },
             error: function (err) {
@@ -26,7 +25,6 @@ let submitButton = document.querySelector('button.processCheckout');
 
 submitButton.addEventListener('click', function (event) {
     event.preventDefault();
-
     PagSeguroDirectPayment.createCardToken({
         cardNumber:         document.querySelector('input[name=card_number]').value,
         brand:              document.querySelector('input[name=card_brand]').value,
@@ -36,6 +34,7 @@ submitButton.addEventListener('click', function (event) {
         success: function (res) {
             console.log(res);
             proccessPayment(res.card.token)
+
         },
 
         error: function (err) {
