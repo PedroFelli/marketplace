@@ -70,7 +70,7 @@
                     </div>
                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCategorias" aria-expanded="false" aria-controls="collapseLayouts">
                         <div class="sb-nav-link-icon">
-                            <i class="fas fa-tag"></i>
+                            <i class="fas fa-tags"></i>
                         </div>Categorias<div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div></a>
                     <div class="collapse" id="collapseCategorias" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                         <nav class="sb-sidenav-menu-nested nav">
@@ -79,7 +79,7 @@
                     </div>
                     <a class="nav-link collapsed" href="{{route('admin.orders.my')}}" data-toggle="collapse" data-target="#collapseOrders" aria-expanded="false" aria-controls="collapseLayouts">
                         <div class="sb-nav-link-icon">
-                            <i class="fas fa-tag"></i>
+                            <i class="fas fa-cart-arrow-down"></i>
                         </div>Pedidos<div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div></a>
                     <div class="collapse" id="collapseOrders" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                         <nav class="sb-sidenav-menu-nested nav">

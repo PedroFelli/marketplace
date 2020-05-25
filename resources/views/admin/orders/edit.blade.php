@@ -38,7 +38,6 @@
                             <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
                         </div>
                     @endif
-                    <br>
 
                 <div class="form-group">
                     <label>Status do Pagamento:</label>
@@ -59,12 +58,22 @@
 
                     @endif
                 </div>
-
                 <div class="form-group">
                     <label>PagSeguro Code:</label>
                     <input type="text" name="name" class="form-control" disabled value="{{$order->pagseguro_code}}">
                 </div>
-
+                <hr>
+                <div class="form-group">
+                    <label>Codigo de rastreio:</label>
+                    <input type="text" name="name" class="form-control"  value="" placeholder="31313132131321">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                        <label class="form-check-label" for="defaultCheck1">
+                            Enviar notificação
+                        </label>
+                    </div>
+                </div>
+                <hr>
                 <strong>Items:</strong>
                 @php $items = unserialize($order->items);  @endphp
                 @foreach( filterItemsByStore($items, auth()->user()->store->id) as $item)
@@ -76,10 +85,6 @@
 
                 @endforeach
 
-                <div class="form-group">
-                    <label>Codigo de rastreio:</label>
-                    <input type="text" name="name" class="form-control"  value="" placeholder="31313132131321">
-                </div>
 
 
                 <div>

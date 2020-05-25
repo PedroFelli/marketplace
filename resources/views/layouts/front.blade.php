@@ -68,7 +68,7 @@
                         </li>
 
                         <li class="label1" data-label1="hot">
-                            <a href="shoping-cart.html">Novidades</a>
+                            <a href="{{route('store.index')}}">Novidades</a>
                         </li>
 
 
@@ -110,7 +110,7 @@
     <div class="wrap-header-mobile">
         <!-- Logo moblie -->
         <div class="logo-mobile">
-            <a href="/home">
+            <a href="/">
                 Mally
             </a>
         </div>
@@ -183,10 +183,10 @@
                 </li>
             @endguest
             <li>
-                <a href="/">Loja</a>
+                <a href="{{route('store.index')}}">Loja</a>
             </li>
             <li>
-                <a href="/" class="label1 rs1" data-label1="hot">
+                <a href="{{route('store.index')}}" class="label1 rs1" data-label1="hot">
                     Novidades
                 </a>
             </li>
@@ -229,7 +229,7 @@
                 </li>
                 @auth()
                     <li class="p-b-13">
-                        <a href="#"  class="stext-102 cl2 hov-cl1 trans-04">
+                        <a href="/"  class="stext-102 cl2 hov-cl1 trans-04">
                             Minha conta
                         </a>
                     </li>
@@ -261,10 +261,10 @@
 
 
                 <li class="p-b-13">
-                    <a class="stext-102 cl2 hov-cl1 trans-04" href="/">Loja</a>
+                    <a class="stext-102 cl2 hov-cl1 trans-04" href="{{route('store.index')}}">Loja</a>
                 </li>
                 <li class="p-b-13">
-                    <a class="stext-102 cl2 hov-cl1 trans-04" href="/" class="label1 rs1" data-label1="hot">
+                    <a class="stext-102 cl2 hov-cl1 trans-04" href="{{route('store.index')}}" class="label1 rs1" data-label1="hot">
                         Novidades
                     </a>
                 </li>

@@ -42,7 +42,7 @@ class LoginController extends Controller
     protected  function authenticated(Request $request, $user)
     {
         if($user->role == 'ROLE_OWNER')
-            return redirect()->route('admin.stores.index');
+            return redirect()->route('admin.index');
 
         if($user->role == 'ROLE_USER' && session()->has('cart')){
             return redirect()->route('checkout.index');
