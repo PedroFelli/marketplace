@@ -12,8 +12,15 @@ class StoreController extends Controller
     {
         $this->store = $store;
     }
+    public function index(){
+        $products = \App\Product::paginate(15);
 
-    public function index($slug){
+
+
+        return view('store-single', compact('products'));
+    }
+
+    public function single($slug){
         $store = $this->store->whereSlug($slug)->first();
 
         return view('store', compact('store'));

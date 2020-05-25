@@ -16,8 +16,18 @@ class OrdersController extends Controller
 
     public function index(){
         //Loja do usuario autenticado
-        $orders = auth()->user()->store->orders()->paginate(15);
+        $orders = auth()->user()->store->orders()->paginate();
 
         return view('admin.orders.index', compact('orders'));
+    }
+
+
+    public function edit( $order)
+    {
+
+        $order = $this->order->findOrFail($order);
+        $user = \App\User::find($order->user_id);
+
+        return view('admin.orders.edit', compact( 'order', 'user'));
     }
 }

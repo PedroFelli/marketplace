@@ -27,8 +27,8 @@ class ProductController extends Controller
             return redirect()->route('admin.stores.index');
         }
 
-        $userStore = auth()->user()->store;
-        $products = $userStore->products()->paginate(10);
+        $products = \App\Product::all();
+
 
         return view('admin.products.index', compact('products'));
     }

@@ -1,70 +1,131 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Markplace</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="{{asset('css/app.css')}}">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Dashboard - Mally</title>
+    <link href="https://blackrockdigital.github.io/startbootstrap-sb-admin/dist/css/styles.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
 </head>
-<body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="margin-bottom: 40px;" >
-    <a class="navbar-brand" href="{{route('home')}}">Marktplace</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+<body class="sb-nav-fixed">
+<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+    <a class="navbar-brand" href="{{route('admin.index')}}">Mally</a><button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button
+    ><!-- Navbar Search-->
+    <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
+        <div class="input-group">
 
-    @auth()
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item @if(request()->is('admin/orders/my*')) active @endif ">
-                    <a class="nav-link" href="{{route('admin.orders.my')}}">Meus Pedidos</a>
-                </li>
-                <li class="nav-item @if(request()->is('admin/stores*')) active @endif ">
-                    <a class="nav-link" href="{{route('admin.stores.index')}}">Loja</a>
-                </li>
-                <li class="nav-item @if(request()->is('admin/products*')) active @endif ">
-                    <a class="nav-link" href="{{route('admin.products.index')}}">Produtos</a>
-                </li>
-                <li class="nav-item @if(request()->is('admin/categories*')) active @endif ">
-                    <a class="nav-link" href="{{route('admin.categories.index')}}">Categorias</a>
-                </li>
+        </div>
+    </form>
+    <!-- Navbar-->
+    <ul class="navbar-nav ml-auto ml-md-0">
+        <li class="nav-item">
+            <a href="{{route('admin.notifications.index')}}" class="nav-link">
+                <span class="badge badge-danger">{{auth()->user()->unreadNotifications->count()}}</span>
+                <i class="fa fa-bell"></i>
+            </a>
+        </li>
 
-            </ul>
-            <div class="my-2 my-lg-0">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a href="{{route('admin.notifications.index')}}" class="nav-link">
-                            <span class="badge badge-danger">{{auth()->user()->unreadNotifications->count()}}</span>
-                            <i class="fa fa-bell"></i>
-                        </a>
-                    </li>
-                    <li class="nav-item ">
-                        <a class="nav-link" href="" onclick="
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+                <a class="dropdown-item" href="#">Settings</a>
+                <a class="dropdown-item" href="#">Activity Log</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="" onclick="
                          event.preventDefault();
                          document.querySelector('form.logout').submit();">Sair</a>
 
-                        <form action="{{route('logout')}}" class="logout" method="POST" style="display: none.">
-                            @csrf
-                        </form>
-                    </li>
-                    <li class="nav-item">
-                        <span class="nav-link">{{auth()->user()->name}}</span>
-                    </li>
-                </ul>
+                <form action="{{route('logout')}}" class="logout" method="POST" style="display: none.">
+                    @csrf
+                </form>
             </div>
-            @endauth
-        </div>
+        </li>
+    </ul>
 </nav>
-<div class="container">
-    @include('flash::message')
-    @yield('content')
+<div id="layoutSidenav">
+    <div id="layoutSidenav_nav">
+        <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+            <div class="sb-sidenav-menu">
+                <div class="nav">
+                    <div class="sb-sidenav-menu-heading">Core</div>
+                    <a class="nav-link" href="{{route('admin.index')}}">
+                        <div class="sb-nav-link-icon">
+                            <i class="fas fa-tachometer-alt">
+                            </i>
+                        </div>
+                        Dashboard</a>
+                    <div class="sb-sidenav-menu-heading">Interface</div>
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseProdutos" aria-expanded="false" aria-controls="collapseLayouts">
+                        <div class="sb-nav-link-icon">
+                            <i class="fas fa-tshirt"></i>
+                        </div>Produtos<div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div></a>
+                    <div class="collapse" id="collapseProdutos" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+                        <nav class="sb-sidenav-menu-nested nav">
+                            <a class="nav-link" href="{{route('admin.products.index')}}">Ver produtos</a>
+                            <a class="nav-link" href="{{route('admin.products.create')}}">Adicionar produto</a></nav>
+                    </div>
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCategorias" aria-expanded="false" aria-controls="collapseLayouts">
+                        <div class="sb-nav-link-icon">
+                            <i class="fas fa-tag"></i>
+                        </div>Categorias<div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div></a>
+                    <div class="collapse" id="collapseCategorias" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+                        <nav class="sb-sidenav-menu-nested nav">
+                            <a class="nav-link" href="{{route('admin.categories.index')}}">Ver categorias</a>
+                            <a class="nav-link" href="{{route('admin.categories.create')}}">Adicionar categoria</a></nav>
+                    </div>
+                    <a class="nav-link collapsed" href="{{route('admin.orders.my')}}" data-toggle="collapse" data-target="#collapseOrders" aria-expanded="false" aria-controls="collapseLayouts">
+                        <div class="sb-nav-link-icon">
+                            <i class="fas fa-tag"></i>
+                        </div>Pedidos<div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div></a>
+                    <div class="collapse" id="collapseOrders" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+                        <nav class="sb-sidenav-menu-nested nav">
+                            <a class="nav-link" href="{{route('admin.orders.my')}}">Ver pedidos</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sb-sidenav-footer">
+                <div class="small">Logged in as:</div>
+                <span class="nav-link">{{auth()->user()->name}}</span>
+            </div>
+        </nav>
+    </div>
+    <div id="layoutSidenav_content">
+        <div class="container">
+            @include('flash::message')
+            @yield('content')
+        </div>
+        <footer class="py-4 bg-light mt-auto">
+            <div class="container-fluid">
+                <div class="d-flex align-items-center justify-content-between small">
+                    <div class="text-muted">Copyright &copy; Mally 2020</div>
+                    <div>
+                        <a href="#">Privacy Policy</a>
+                        &middot;
+                        <a href="#">Terms &amp; Conditions</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
 </div>
 <script src="{{asset('js/app.js')}}"></script>
 @yield('scripts')
-
-
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+<script src="https://blackrockdigital.github.io/startbootstrap-sb-admin/dist/js/scripts.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+<script src="https://blackrockdigital.github.io/startbootstrap-sb-admin/dist/assets/demo/chart-area-demo.js"></script>
+<script src="https://blackrockdigital.github.io/startbootstrap-sb-admin/dist/assets/demo/chart-bar-demo.js"></script>
+<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
+<script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
+<script src="https://blackrockdigital.github.io/startbootstrap-sb-admin/dist/assets/demo/datatables-demo.js"></script>
+<script>
+    $('.dropdown-toggle').dropdown()
+</script>
 </body>
 </html>
