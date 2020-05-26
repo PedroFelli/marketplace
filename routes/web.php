@@ -47,6 +47,7 @@ Route::group(['middleware' => ['auth', 'access.control.store.admin']], function 
 
         Route::get('orders/my', 'OrdersController@index')->name('orders.my');
         Route::get('orders/{order}/edit', 'OrdersController@edit')->name('orders.edit');
+        Route::put('orders/{order}', 'OrdersController@update')->name('orders.update');
 
         Route::get('notifications', 'NotificationController@notifications')->name('notifications.index');
         Route::get('notifications/read-all', 'NotificationController@readAll')->name('notifications.read.all');

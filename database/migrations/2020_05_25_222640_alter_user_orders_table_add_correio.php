@@ -4,17 +4,14 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AlterUserOrdersTable extends Migration
+class AlterUserOrdersTableAddCorreio extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return voidcodigo_rastreio
-     */
     public function up()
     {
-        Schema::table('user_orders', function (Blueprint $table) {
-            $table->string('pedido_status')->default(1);
+        Schema::table('user_orders', function (Blueprint $table
+        ) {
+            $table->string('codigo_rastreio')->nullable();
+            $table->boolean('send_cod_rastreio')->nullable();
         });
     }
 
@@ -26,7 +23,8 @@ class AlterUserOrdersTable extends Migration
     public function down()
     {
         Schema::table('user_orders', function (Blueprint $table) {
-            $table->dropColumn('pedido_status');
+            $table->dropColumn('codigo_rastreio');
+            $table->dropColumn('send_cod_rastreio');
         });
     }
 }

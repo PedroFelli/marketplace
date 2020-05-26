@@ -30,4 +30,20 @@ class OrdersController extends Controller
 
         return view('admin.orders.edit', compact( 'order', 'user'));
     }
+
+
+    public function update(Request $request, $id)
+    {
+
+        $data = $request->all();
+
+        $order = \App\UserOrder::find($id);
+
+
+        dd($data);
+        $order->update($data);
+
+        flash('Pedido atualizado com Sucesso!')->success();
+        return redirect()->route('admin.orders.my');
+    }
 }

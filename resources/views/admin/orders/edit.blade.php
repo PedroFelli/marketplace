@@ -4,7 +4,10 @@
     <main>
         <div class="container-fluid">
             <h1 class="mt-4">Atualizar Pedido</h1>
-            <form action="{{route('admin.products.store')}}" method="post" >
+            <form action="{{route('admin.orders.update', $order->id)}}" method="post" >
+                @csrf
+                @method("PUT")
+
 
 
                 <div class="form-group">
@@ -42,32 +45,36 @@
                 <div class="form-group">
                     <label>Status do Pagamento:</label>
                     @if ($order->pedido_status == 1)
-                        <input type="text" name="name" class="form-control" disabled value="Aguardando PagSeguro">
+                        <input type="text" name="pedido_status" class="form-control" disabled value="Aguardando PagSeguro">
                     @elseif($order->pedido_status == 2)
-                        <input type="text" name="name" class="form-control" disabled value="Em análise">
+                        <input type="text" name="pedido_status" class="form-control" disabled value="Em análise">
                     @elseif($order->pedido_status == 3)
-                        <input type="text" name="name" class="form-control" disabled value="Pago">
+                        <input type="text" name="pedido_status" class="form-control" disabled value="Pago">
                     @elseif($order->pedido_status == 4)
-                        <input type="text" name="name" class="form-control" disabled value="Disponível">
+                        <input type="text" name="pedido_status" class="form-control" disabled value="Disponível">
                     @elseif($order->pedido_status == 5)
-                        <input type="text" name="name" class="form-control" disabled value=" Em disputa">
+                        <input type="text" name="pedido_status" class="form-control" disabled value=" Em disputa">
                     @elseif($order->pedido_status == 6)
-                        <input type="text" name="name" class="form-control" disabled value="Devolvida">
+                        <input type="text" name="pedido_status" class="form-control" disabled value="Devolvida">
                     @elseif($order->pedido_status == 7)
-                        <input type="text" name="name" class="form-control" disabled value="Cancelada">
+                        <input type="text" name="pedido_status" class="form-control" disabled value="Cancelada">
 
                     @endif
                 </div>
                 <div class="form-group">
                     <label>PagSeguro Code:</label>
-                    <input type="text" name="name" class="form-control" disabled value="{{$order->pagseguro_code}}">
+                    <input type="text" name="pagseguro_code" class="form-control" disabled value="{{$order->pagseguro_code}}">
+                </div>
+                <div class="form-group">
+                    <label>Reference:</label>
+                    <input type="text" name="reference" class="form-control" disabled value="{{$order->reference}}">
                 </div>
                 <hr>
                 <div class="form-group">
                     <label>Codigo de rastreio:</label>
-                    <input type="text" name="name" class="form-control"  value="" placeholder="31313132131321">
+                    <input type="text" name="codigo_rastreio" class="form-control"  value="{{$order->codigo_rastreio}}" placeholder="31313132131321">
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                        <input class="form-check-input" name="send_cod_rastreio" type="checkbox" value="1" id="defaultCheck1">
                         <label class="form-check-label" for="defaultCheck1">
                             Enviar notificação
                         </label>
