@@ -50,7 +50,10 @@
 
                         </table>
                     </div>
-
+                    <!-- INICIO CODIGO PAGSEGURO -->
+                    <a href="https://pagseguro.uol.com.br/desenvolvedor/simulador_de_frete.jhtml?CepOrigem=75083470&amp;Peso=1&amp;Valor=0,00" id="ps_freight_simulator" target="_blank"><img src="https://p.simg.uol.com.br/out/pagseguro/i/user/imgCalculoFrete.gif" id="imgCalculoFrete" alt="Cálculo automático de frete" border="0" /></a>
+                    <script type="text/javascript" src="https://p.simg.uol.com.br/out/pagseguro/j/simulador_de_frete.js"></script>
+                    <!-- FINAL CODIGO PAGSEGURO -->
                     <div class="flex-w flex-sb-m bor15 p-t-18 p-b-15 p-lr-40 p-lr-15-sm">
                         <a href="{{route('checkout.index')}}">
                             <div class="flex-c-m stext-101 cl2 size-119 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-10">
