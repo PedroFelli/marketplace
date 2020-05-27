@@ -60,26 +60,28 @@
 
                                 <div class="size-204 respon6-next">
                                     <div class="rs1-select2 bor8 bg0">
-                                        <select class="js-select2"  name="product[size]">
-                                            <option>Selecione a opção</option>
-                                            <option>Size P</option>
-                                            <option>Size M</option>
-                                            <option>Size G</option>
+                                        <select class="js-select2"  id="productSize"  name="size" onchange="sizeSelect(event)" >
+                                            <option selected disabled>Selecione o tamanho</option>
+                                            <option> P</option>
+                                            <option> M</option>
+                                            <option> G</option>
                                         </select>
                                         <div class="dropDownSelect2"></div>
                                     </div>
                                 </div>
+                                @error('size')
+                                <span style="color: red"> <strong>{{$message}}</strong></span>
+                                @enderror
                             </div>
 
                             <div class="flex-w flex-r-m p-b-10">
                                 <div class="size-203 flex-c-m respon6">
                                     Cor
                                 </div>
-
                                 <div class="size-204 respon6-next">
                                     <div class="rs1-select2 bor8 bg0">
-                                        <select class="js-select2"  name="product[color]">
-                                            <option>Selecione a opção</option>
+                                        <select class="js-select2" id="productColor" name="color" onchange="colorSelect(event)">
+                                            <option selected disabled>Selecione a cor</option>
                                             <option>Red</option>
                                             <option>Blue</option>
                                             <option>White</option>
@@ -88,6 +90,9 @@
                                         <div class="dropDownSelect2"></div>
                                     </div>
                                 </div>
+                                @error('color')
+                                <span style="color: red"> <strong>{{$message}}</strong></span>
+                                @enderror
                             </div>
 
                             <div class="flex-w flex-r-m p-b-10">
@@ -100,6 +105,8 @@
                                         @else
                                             <input type="text" name="product[photo]" value="{{asset('assets/img/no-photo.jpg')}}" hidden>
                                         @endif
+                                            <input type="text" id="colorInput" name="product[color]" value="" hidden>
+                                            <input type="text" id="sizeInput" name="product[size]" value="" hidden>
                                             <input type="text" name="product[name]" value="{{$product->name}}" hidden>
                                             <input type="text" name="product[price]" value="{{$product->price}}" hidden>
                                             <input type="text" name="product[slug]"  value="{{$product->slug}}" hidden>
@@ -118,9 +125,10 @@
                                                 Adicionar ao carrinho
                                             </button>
                                         </div>
-                                    </form>
                                 </div>
                             </div>
+                                    </form>
+
                         </div>
                     </div>
                 </div>
@@ -129,6 +137,17 @@
 
         </div>
     </section>
+
 @endsection
+
+<script>
+    function colorSelect(e) {
+        document.getElementById("colorInput").value = document.getElementById("productColor").value = e.target.value;
+    }
+    function sizeSelect(e) {
+        document.getElementById("colorInput").value = document.getElementById("sizeInput").value = e.target.value;
+    }
+
+</script>
 
 

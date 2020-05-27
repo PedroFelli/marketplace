@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CardAddRequest;
 use Illuminate\Http\Request;
 use Ramsey\Uuid\Uuid;
 
@@ -13,7 +14,7 @@ class CartController extends Controller
         return view('cart', compact('cart'));
     }
 
-    public function add(Request $request){
+    public function add(CardAddRequest $request){
         $productData = $request->get('product');
 
         $product = \App\Product::whereSlug($productData['slug']);

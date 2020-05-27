@@ -121,8 +121,8 @@
 @endsection
 
 @section('scripts')
-    <script src="https://stc.sandbox.pagseguro.uol.com.br/pagseguro/api/v2/checkout/pagseguro.directpayment.js"></script>
-     <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+        <script src="https://stc.sandbox.pagseguro.uol.com.br/pagseguro/api/v2/checkout/pagseguro.directpayment.js"></script>
+            <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
     <script>
         const sessionId = '{{session()->get('pagseguro_session_code')}}';
@@ -136,16 +136,6 @@
     </script>
     <script src="{{asset('js/pagseguro_functions.js')}}"></script>
     <script src="{{asset('js/pagseguro_events.js')}}"></script>
-    <script>
-        $('.btn').on('click', function() {
-            var $this = $(this);
-            $this.button('loading');
-            setTimeout(function() {
-                $this.button('reset');
-            }, 8000);
-        });
-    </script>
-
             <script type="text/javascript" >
 
                 function limpa_formulário_cep() {

@@ -10,7 +10,7 @@
                             <tr class="table_head">
                                 <th class="column-1">Produto</th>
                                 <th class="column-2"></th>
-                                <th class="column-3">Preço</th>
+                                <th class="column-3">Detalhes</th>
                                 <th class="column-4">Quantidade</th>
                                 <th class="column-5">Ação</th>
                                 <th class="column-5">Total</th>
@@ -26,7 +26,12 @@
                                     </div>
                                 </td>
                                 <td class="column-2">{{$c['name']}}</td>
-                                <td class="column-3">R$ {{number_format(($c['price']),2 ,',','.')}}</td>
+                                <td class="column-2">
+                                   <p >Cor: {{$c['color']}}<br>
+                                    Tamanho: {{$c['size']}}<br>
+                                    Valor: R$ {{number_format(($c['price']),2 ,',','.')}}<br>
+                                   </p>
+                                </td>
                                 <td class="column-4">{{$c['amount']}}</td>
 
                                 <td class="column-5">
