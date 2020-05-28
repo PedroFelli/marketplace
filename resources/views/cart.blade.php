@@ -50,28 +50,58 @@
 
                         </table>
                     </div>
-
+                    <div class="wrap-table-shopping-cart">
+                        <div class="size-208" style="padding-left: 15px; padding-top: 10px;">
+                            <span class="mtext-101 cl2" >
+								Calcular frete
+							</span>
+                            <div class="bor8 bg0 m-b-22" style="margin-top: 8px;" >
+                                <input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="postcode" placeholder="Cep">
+                            </div>
+                        </div>
+                    </div>
                     <div class="flex-w flex-sb-m bor15 p-t-18 p-b-15 p-lr-40 p-lr-15-sm">
                         <a href="{{route('checkout.index')}}">
                             <div class="flex-c-m stext-101 cl2 size-119 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-10">
-                               Finalizar compra
+                               Calcular frete
+                            </div>
+                            <div id="frete"></div>
+                        </a>
+                        <a href="{{route('checkout.index')}}">
+                            <div class="flex-c-m stext-101 cl2 size-119 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-10">
+                                Finalizar compra
                             </div>
                         </a>
                     </div>
                 </div>
-            </div>
-
-            <div class="container">
-            <div class="row">
-
-
 
             </div>
-        </div>
+
+            <button>Send an HTTP GET request to a page and get the result back</button>
+
+    </div>
         @else
             <div class="container">
                 <div class="alert alert-warning col-8" style="margin: auto;">Carrinho vazinho</div>
             </div>
         @endif
     </div>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+            <script type="text/javascript" src="js/xml2json.min.js"></script>
+            <script>
+                $(document).ready(function(){
+                    $("button").click(function(){
+                        var x2js = new X2JS();
+                        $.ajax({
+                            url: "http://ws.correios.com.br/calculador/CalcPrecoPrazo.aspx?&sCepOrigem=75083470&sCepDestino=08226021&nVlPeso=1&nCdFormato=1&nVlComprimento=20&nVlAltura=20&nVlLargura=20&sCdMaoPropria=n&nVlValorDeclarado=100,&sCdAvisoRecebimento=n&nCdServico=04510&nVlDiametro=0&StrRetorno=xml&nIndicaCalculo=3p",
+                            dataType: "xml",
+                            success: function(data) {
+                                var xmlText = data; // XML
+                                var jsonData = x2js.xml2json(xmlText); // Convert XML to JSON
+                                console.log(jsonData.Servicos.cServico);
+                            }
+                        });
+                    });
+                });
+            </script>
 @endsection
