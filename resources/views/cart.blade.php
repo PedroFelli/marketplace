@@ -50,6 +50,7 @@
 
                         </table>
                     </div>
+<<<<<<< HEAD
                     <div class="wrap-table-shopping-cart">
                         <div class="size-208" style="padding-left: 15px; padding-top: 10px;">
                             <span class="mtext-101 cl2" >
@@ -60,6 +61,12 @@
                             </div>
                         </div>
                     </div>
+=======
+                    <!-- INICIO CODIGO PAGSEGURO -->
+                    <a href="https://pagseguro.uol.com.br/desenvolvedor/simulador_de_frete.jhtml?CepOrigem=75083470&amp;Peso=1&amp;Valor=0,00" id="ps_freight_simulator" target="_blank"><img src="https://p.simg.uol.com.br/out/pagseguro/i/user/imgCalculoFrete.gif" id="imgCalculoFrete" alt="Cálculo automático de frete" border="0" /></a>
+                    <script type="text/javascript" src="https://p.simg.uol.com.br/out/pagseguro/j/simulador_de_frete.js"></script>
+                    <!-- FINAL CODIGO PAGSEGURO -->
+>>>>>>> 2c2ee3dd7bfff9b8028c5ac2151c3018c3a04ec0
                     <div class="flex-w flex-sb-m bor15 p-t-18 p-b-15 p-lr-40 p-lr-15-sm">
                         <a href="{{route('checkout.index')}}">
                             <div class="flex-c-m stext-101 cl2 size-119 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-10">

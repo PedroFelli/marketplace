@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Notifications\UserNewOrder;
 use App\Payment\PagSeguro\CreditCard;
 use App\Payment\PagSeguro\Notification;
 use App\Store;
@@ -58,6 +59,9 @@ class CheckoutController extends Controller
 
             //Notificar Loja de novo pedido
 
+
+            dd();
+            $user->notify(new UserNewOrder());
             $store = (new Store())->notifyStoreOwners($stores);
 
             session()->forget('cart');
