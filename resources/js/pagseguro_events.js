@@ -33,6 +33,7 @@ submitButton.addEventListener('click', function (event) {
         cvv:                document.querySelector('input[name=card_cvv]').value,
         expirationMonth:    document.querySelector('input[name=card_month]').value,
         expirationYear:     document.querySelector('input[name=card_year]').value,
+
         success: function (res) {
             console.log(res);
             proccessPayment(res.card.token)

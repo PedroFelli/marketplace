@@ -4,6 +4,17 @@ function proccessPayment(token) {
         hash: PagSeguroDirectPayment.getSenderHash(),
         installment: document.querySelector('select.select_installments').value,
         card_name: document.querySelector('input[name=card_name]').value,
+        card_birthdate: document.querySelector('input[name=card_birthdate]').value,
+        card_cpf: document.querySelector('input[name=card_cpf]').value,
+        card_telefone: document.querySelector('input[name=card_telefone]').value,
+        card_cep: document.querySelector('input[name=cep]').value,
+        card_rua: document.querySelector('input[name=rua]').value,
+        card_numero: document.querySelector('input[name=numero]').value,
+        card_bairro: document.querySelector('input[name=bairro]').value,
+        card_cidade: document.querySelector('input[name=cidade]').value,
+        card_uf: document.querySelector('input[name=uf]').value,
+        card_complemento: document.querySelector('input[name=complemento]').value,
+
         _token: csrf,
     };
     $.ajax({

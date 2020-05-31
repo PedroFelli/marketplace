@@ -4,18 +4,22 @@
 namespace App\Payment\PagSeguro;
 
 
+use App\Payment\CalculoFrete;
+
 class CreditCard
 {
     private $items;
     private $user;
     private $cardInfo;
     private $reference;
+    private $senderAdress;
 
-    public function __construct($items, $user, $cardInfo, $reference){
+    public function __construct($items, $user, $cardInfo, $senderAddress, $reference){
         $this->items = $items;
         $this->user = $user;
         $this->cardInfo = $cardInfo;
         $this->reference = $reference;
+        $this->senderAdress = $senderAddress;
     }
 
     public function doPayment(){
@@ -25,6 +29,16 @@ class CreditCard
         $creditCard->setReceiverEmail(env('PAGSEGURO_EMAIL'));
         $creditCard->setReference(base64_encode($this->reference));
         $creditCard->setCurrency("BRL");
+
+
+        $valorFrete = new CalculoFrete();
+        $valorFrete = $valorFrete->calculoFrete($this->senderAdress['cep']);
+        //add valor do frete
+        $creditCard->setExtraAmount($valorFrete);
+
+        //add valor do frete
+        $creditCard->setExtraAmount($valorFrete);
+
 
         foreach ($this->items as $item){
             $creditCard->addItems()->withParameters(
@@ -41,14 +55,17 @@ class CreditCard
         $creditCard->setSender()->setName($this->cardInfo['card_name']);
         $creditCard->setSender()->setEmail($email);
 
+        list($areaCode, $number) = explode('-', $this->cardInfo['card_telefone']);
+
+
         $creditCard->setSender()->setPhone()->withParameters(
-            11,
-            56273440
+            $areaCode,
+            $number
         );
 
         $creditCard->setSender()->setDocument()->withParameters(
             'CPF',
-            '16263476540'
+            $this->cardInfo['card_cpf']
         );
 
         $creditCard->setSender()->setHash($this->cardInfo['hash']);
@@ -56,26 +73,26 @@ class CreditCard
 
         // Set shipping information for this payment request
         $creditCard->setShipping()->setAddress()->withParameters(
-            'Av. Brig. Faria Lima',
-            '1384',
-            'Jardim Paulistano',
-            '01452002',
-            'São Paulo',
-            'SP',
+            $this->senderAdress['rua'],
+            $this->senderAdress['numero'],
+            $this->senderAdress['bairro'],
+            $this->senderAdress['cep'],
+            $this->senderAdress['cidade'],
+            $this->senderAdress['uf'],
             'BRA',
-            'apto. 114'
+            $this->senderAdress['complemento']
         );
 
         //Set billing information for credit card
         $creditCard->setBilling()->setAddress()->withParameters(
-            'Av. Brig. Faria Lima',
-            '1384',
-            'Jardim Paulistano',
-            '01452002',
-            'São Paulo',
-            'SP',
+            $this->cardInfo['card_rua'],
+            $this->cardInfo['card_numero'],
+            $this->cardInfo['card_bairro'],
+            $this->cardInfo['card_cep'],
+            $this->cardInfo['card_cidade'],
+            $this->cardInfo['card_uf'],
             'BRA',
-            'apto. 114'
+            $this->cardInfo['card_complemento']
         );
 
         // Set credit card token
@@ -85,17 +102,17 @@ class CreditCard
         $creditCard->setInstallment()->withParameters($quantity,$installmentAmout);
 
         // Set the credit card holder information
-        $creditCard->setHolder()->setBirthdate('01/10/1979');
+        $creditCard->setHolder()->setBirthdate($this->cardInfo['card_birthdate']);
         $creditCard->setHolder()->setName($this->cardInfo['card_name']); // Equals in Credit Card
 
         $creditCard->setHolder()->setPhone()->withParameters(
-            11,
-            56273440
+            $areaCode,
+            $number
         );
 
         $creditCard->setHolder()->setDocument()->withParameters(
             'CPF',
-            '16263476540'
+            $this->cardInfo['card_cpf']
         );
 
 
@@ -110,4 +127,5 @@ class CreditCard
 
         return $result;
     }
+
 }

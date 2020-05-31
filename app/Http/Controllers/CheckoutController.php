@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SenderRequest;
 use App\Notifications\UserNewOrder;
+use App\Payment\CalculoFrete;
 use App\Payment\PagSeguro\CreditCard;
 use App\Payment\PagSeguro\Notification;
 use App\Store;
@@ -13,14 +15,45 @@ use Ramsey\Uuid\Uuid;
 
 class CheckoutController extends Controller
 {
-    public function index(){
 
+    public function step1(){
         if(!auth()->check()){
             return redirect()->route('login');
         }
 
         if(!session()->has('cart'))
-            return redirect()->route('home');
+            return redirect()->route('step1');
+
+//        $this->makePagSeguroSession();
+//
+        $cartItems = array_map(function ($line){
+            return $line['amount']* $line['price'];
+        }, session()->get('cart'));
+
+        $cartItems = array_sum($cartItems);
+
+        return view('checkout-step1', compact('cartItems'));
+    }
+
+    public function step2(SenderRequest $request){
+        $sender = $request->all();
+
+
+       // dd($sender['cep']);
+        //Calculando valor do frete
+        $valorFrete = new CalculoFrete();
+        $valorFrete = $valorFrete->calculoFrete($sender['cep']);
+
+        $valorFrete;
+
+        //  checando o endereço do sender
+        if(session()->has('sender')){
+            session()->forget('sender');
+            session()->put('sender', $sender);
+        } else {
+            session()->put('sender', $sender);
+        }
+
 
         $this->makePagSeguroSession();
 
@@ -30,19 +63,22 @@ class CheckoutController extends Controller
 
         $cartItems = array_sum($cartItems);
 
-        return view('checkout', compact('cartItems'));
+        return view('checkout-step2', compact('cartItems', 'valorFrete'));
     }
+
+
 
     public function proccess(Request $request){
         try {
             $dataPost = $request->all();
             $user = auth()->user();
             $cartItems = session()->get('cart');
+            $senderAddress  = session()->get('sender');
             $stores = array_unique(array_column($cartItems, 'store_id'));
             $reference = Uuid::uuid4();
 
 
-            $creditCardPayment = new CreditCard($cartItems, $user, $dataPost, $reference);
+            $creditCardPayment = new CreditCard($cartItems, $user, $dataPost, $senderAddress, $reference);
             $result = $creditCardPayment->doPayment();
 
             $userOder = [
@@ -59,8 +95,6 @@ class CheckoutController extends Controller
 
             //Notificar Loja de novo pedido
 
-
-            dd();
             $user->notify(new UserNewOrder());
             $store = (new Store())->notifyStoreOwners($stores);
 

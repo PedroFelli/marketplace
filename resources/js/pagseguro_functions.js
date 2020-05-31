@@ -4,18 +4,12 @@ function proccessPayment(token) {
         hash: PagSeguroDirectPayment.getSenderHash(),
         installment: document.querySelector('select.select_installments').value,
         card_name: document.querySelector('input[name=card_name]').value,
+        card_birthdate: document.querySelector('input[name=card_birthdate]').value,
+        card_cpf: document.querySelector('input[name=card_cpf]').value,
         _token: csrf,
     };
-    $.ajax({
-        type: 'POST',
-        url: urlProccess,
-        data: data,
-        dataType: 'json',
-        success: function (res) {
-            toastr.success(res.data.message, 'Sucesso');
-            window.location.href = `${urlThanks}?order=${res.data.order}`
-        }
-    });
+
+    console.log(data);
 }
 
 function getInstallments(amount, brand) {

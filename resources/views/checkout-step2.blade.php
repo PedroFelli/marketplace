@@ -21,7 +21,7 @@
                         </div>
                         <div class="col-md-6 form-group">
                             <label>Data de Nascimento </label>
-                            <input type="text" class="form-control" name="card_birthdate"
+                            <input type="text" class="form-control" name="card_birthdate" id="card_birthdate"
                                    placeholder="01/10/1979">
                         </div>
                         <div class="col-md-6 form-group">
@@ -29,11 +29,11 @@
                             <input type="text" class="form-control "name="card_cpf"
                                    placeholder="16263476540">
                         </div>
+
                         <div class="col-md-6 form-group">
                             <label>Telefone</label>
-                            <input type="tel" class="form-control "name="card_telefone"
-                                   placeholder="62-999999999"
-                                   pattern="[0-9]{2}-[0-9]{9}"
+                            <input type="tel" class="form-control "name="card_telefone" id="card_telefone"
+
                                    required >
                         </div>
                     </div>
@@ -59,6 +59,7 @@
                                    id="codigo_segurança"
                                    name="card_cvv">
                         </div>
+
                         <div class="col-md-12 installments form-group"></div>
 
                     </div>
@@ -122,11 +123,13 @@
         <script src="https://stc.sandbox.pagseguro.uol.com.br/pagseguro/api/v2/checkout/pagseguro.directpayment.js"></script>
             <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
+
+
     <script>
         const sessionId = '{{session()->get('pagseguro_session_code')}}';
         const urlThanks = '{{route('checkout.thanks')}}';
         const urlProccess = '{{route("checkout.proccess")}}';
-        const amountTransaction = '{{$cartItems + 10}}';
+        const amountTransaction = '{{$cartItems + $valorFrete}}';
         const csrf = '{{csrf_token()}}';
 
         PagSeguroDirectPayment.setSessionId(sessionId);
@@ -134,6 +137,15 @@
     </script>
     <script src="{{asset('js/pagseguro_functions.js')}}"></script>
     <script src="{{asset('js/pagseguro_events.js')}}"></script>
+
+
+        <script>
+            let imBirthDate = new Inputmask('99/99/9999');
+            imBirthDate.mask(document.getElementById('card_birthdate'));
+
+            let imMobilePhone = new Inputmask('99-999999999');
+            imMobilePhone.mask(document.getElementById('card_telefone'));
+        </script>
             <script type="text/javascript" >
 
                 function limpa_formulário_cep() {

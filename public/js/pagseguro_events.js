@@ -9,7 +9,7 @@ cardNumber.addEventListener('keyup', function () {
                 let imgFlag = `<img src="https://stc.pagseguro.uol.com.br/public/img/payment-methods-flags/68x30/${res.brand.name}.png" style="height: 22px;">`
                 spanBrand.innerHTML = imgFlag;
                 document.querySelector('input[name=card_brand]').value = res.brand.name;
-                getInstallments(amountTransaction, res.brand.name);
+                getInstallments(amountTransaction , res.brand.name);
             },
             error: function (err) {
                 console.log(err)
