@@ -45,7 +45,9 @@ class CreditCard
                 $item['id'],
                 $item['name'],
                 $item['amount'],
-                $item['price']
+                $item['price'],
+                $item['color'],
+                $item['size']
             );
         }
 
@@ -56,7 +58,6 @@ class CreditCard
         $creditCard->setSender()->setEmail($email);
 
         list($areaCode, $number) = explode('-', $this->cardInfo['card_telefone']);
-
 
         $creditCard->setSender()->setPhone()->withParameters(
             $areaCode,

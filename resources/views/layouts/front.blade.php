@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/util.css')}}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/main.css')}}">
 
-    <link rel="stylesheet" type="text/css" href="{{ asset('js/dist/toasty.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('js/dist/toasty.css')}}">
     <!--===============================================================================================-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
@@ -663,6 +663,11 @@
 <script src="{{asset('js/dist/toasty.min.js')}}"></script>
 
 
+
+
+
+
+
 <script>
     $('.gallery-lb').each(function() { // the containers for all your galleries
         $(this).magnificPopup({
@@ -679,6 +684,7 @@
 <script ssrc="{{asset('js/isotope.pkgd.min.js')}}"></script>
 <!--===============================================================================================-->
 <script src="{{asset('js/sweetalert.min.js')}}"></script>
+<script src="{{asset('js/pt-br.errors.js')}}"></script>
 <script>
     var toast = new Toasty();
     $('.js-addwish-b2').on('click', function(e){

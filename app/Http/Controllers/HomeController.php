@@ -18,13 +18,22 @@ class HomeController extends Controller
         $products = $this->product->limit(8)->orderBy('id', 'DESC')->get();
         $stores = \App\Store::limit(3)->orderBy('id', 'DESC')->get();
 
-
         return view('welcome', compact('products', 'stores'));
     }
 
     public function single($slug){
         $product = $this->product->whereSlug($slug)->first();
+        $sizes = \App\Size::all(['id', 'name']);
+        $colors = \App\Color::all(['id', 'name']);
 
-        return view('single', compact('product'));
+        if(!count($product->sizes)){
+           $sizes = 0;
+        }
+
+        if(!count($product->colors)){
+            $colors = 0;
+        }
+
+        return view('single', compact('product', 'sizes', 'colors'));
     }
 }

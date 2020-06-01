@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\ProductSize;
 use Illuminate\Http\Request;
 use App\Product;
 use App\Http\Requests\ProductsRequest;
@@ -37,8 +38,10 @@ class ProductController extends Controller
     public function create()
     {
         $categories = \App\Category::all(['id', 'name']);
+        $sizes = \App\Size::all(['id', 'name']);
+        $colors = \App\Color::all(['id', 'name']);
 
-        return view('admin.products.create', compact('categories'));
+        return view('admin.products.create', compact('categories', 'sizes', 'colors'));
     }
 
 
@@ -47,6 +50,8 @@ class ProductController extends Controller
 
         $data = $request->all();
         $categories = $request->get('categories', null);
+        $sizes = $request->get('sizes', null);
+        $colors = $request->get('colors', null);
 
         $data['price'] = formatPriceToDataBase($data['price']);
 
@@ -54,6 +59,8 @@ class ProductController extends Controller
         $product = $store->products()->create($data);
 
         $product->categories()->sync($categories);
+        $product->sizes()->sync($sizes);
+        $product->colors()->sync($colors);
 
         if($request->hasFile('photos')){
             $images = $this->imageUpload($request->file('photos'), 'image');
@@ -77,9 +84,11 @@ class ProductController extends Controller
     public function edit($product)
     {
         $categories = \App\Category::all(['id', 'name']);
+        $sizes = \App\Size::all(['id', 'name']);
+        $colors = \App\Color::all(['id', 'name']);
         $product = $this->product->findOrFail($product);
 
-        return view('admin.products.edit', compact('product', 'categories'));
+        return view('admin.products.edit', compact('product', 'categories', 'sizes', 'colors'));
     }
 
 
@@ -87,12 +96,30 @@ class ProductController extends Controller
     {
         $data = $request->all();
         $categories = $request->get('categories', null);
+        $sizes = $request->get('sizes', null);
+        $colors = $request->get('colors', null);
 
         $product = $this->product->find($product);
         $product->update($data);
 
+        //TODO limpar categorias
         if (!is_null($categories)){
         $product->categories()->sync($categories);
+        }
+
+        if (!is_null($sizes)){
+            $product->sizes()->sync($sizes);
+        }else {
+
+            $productSizes = ProductSize::where('product_id', $product->id)->get(['product_id']);
+
+            foreach ($productSizes as $productSize){
+
+                ProductSize::where('product_id', $productSize->product_id)->delete();
+            }
+        }
+       if (!is_null($colors)){
+           $product->colors()->sync($colors);
         }
 
         if($request->hasFile('photos')){

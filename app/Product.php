@@ -31,4 +31,12 @@ class Product extends Model
     public function photos(){
         return $this->hasMany(ProductPhoto::class);
     }
+
+    public function sizes(){
+        return $this->belongsToMany(Size::class);
+    }
+
+    public function colors(){
+        return $this->belongsToMany(Color::class);
+    }
 }

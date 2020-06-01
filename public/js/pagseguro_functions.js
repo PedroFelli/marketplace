@@ -14,7 +14,6 @@ function proccessPayment(token) {
         card_cidade: document.querySelector('input[name=cidade]').value,
         card_uf: document.querySelector('input[name=uf]').value,
         card_complemento: document.querySelector('input[name=complemento]').value,
-
         _token: csrf,
     };
     $.ajax({
@@ -25,7 +24,12 @@ function proccessPayment(token) {
         success: function (res) {
             toastr.success(res.data.message, 'Sucesso');
             window.location.href = `${urlThanks}?order=${res.data.order}`
-        }
+        },
+        error: function (err) {
+            toast.error('Erro ao efetuar o pagamento, confira seus dados.', 10000);
+            $(".processCheckout").removeClass('d-none');
+            $("#spinner-pag").addClass('d-none');
+        },
     });
 }
 

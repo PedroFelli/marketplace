@@ -8,24 +8,77 @@
 
 
         <div class="form-group">
-            <label>Produto</label>
-            <input type="text" name="name" class="form-control" value="{{$product->name}}">
+            <label>Nome Produto</label>
+            <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" value="{{$product->name}}">
+
+            @error('name')
+            <div class="invalid-feedback">
+                {{$message}}
+            </div>
+            @enderror
         </div>
 
         <div class="form-group">
             <label>Descrição</label>
-            <input type="text" name="description"  class="form-control" value="{{$product->description}}">
+            <input type="text" name="description" class="form-control @error('description') is-invalid @enderror" value="{{$product->description}}">
+
+            @error('description')
+            <div class="invalid-feedback">
+                {{$message}}
+            </div>
+            @enderror
         </div>
 
         <div class="form-group">
             <label>Conteúdo</label>
-            <textarea name="body" id="" cols="30" rows="10" class="form-control" >{{$product->body}}</textarea>
+            <textarea name="body" id="" cols="30" rows="10" class="form-control @error('body') is-invalid @enderror">{{$product->body}}</textarea>
+
+            @error('body')
+            <div class="invalid-feedback">
+                {{$message}}
+            </div>
+            @enderror
         </div>
+
 
         <div class="form-group">
             <label>Preço</label>
-            <input type="text" name="price" id="price"   class="form-control" value="{{$product->price}}">
+            <input type="text" name="price" id="price" class="form-control @error('price') is-invalid @enderror" value="{{$product->price}}">
+
+            @error('price')
+            <div class="invalid-feedback">
+                {{$message}}
+            </div>
+            @enderror
         </div>
+
+        <div class="form-form-group">
+            <label for="">Tamanho disponivel</label>
+            <select name="sizes[]" id="" class="form-control " multiple>
+                @foreach($sizes as $size)
+                    <option value="{{$size->id}}"
+                            @if($product->sizes->contains($size))
+                            selected @endif>{{$size->name}}
+                    </option>
+                @endforeach
+            </select>
+        </div>
+        <div class="form-form-group">
+            <label for="">Cor</label>
+            <select name="colors[]" id="" class="form-control @error('colors') is-invalid @enderror" multiple>
+                @foreach($colors as $color)
+                    <option value="{{$color->id}}"
+                            @if($product->colors->contains($color))
+                            selected @endif>{{$color->name}}</option>
+                @endforeach
+            </select>
+            @error('colors')
+            <div class="invalid-feedback">
+                {{$message}}
+            </div>
+            @enderror
+        </div>
+
 
         <div class="form-form-group">
             <label for="">Categorias</label>
@@ -72,6 +125,6 @@
 @section('scripts')
 <script src="https://cdn.rawgit.com/plentz/jquery-maskmoney/master/dist/jquery.maskMoney.min.js"></script>
 <script>
-    // $('#price').maskMoney({prefix: '', allowNegative: false, thousands: '.', decimal: ','});
+     $('#price').maskMoney({prefix: '', allowNegative: false, thousands: '.', decimal: ','});
 </script>
 @endsection

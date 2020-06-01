@@ -17,16 +17,16 @@
                     <div class="row">
                         <div class="col-md-12 form-group">
                             <label>Nome no cartão </label>
-                                <input type="text" class="form-control" name="card_name">
+                                <input type="text" class="form-control" name="card_name" required>
                         </div>
                         <div class="col-md-6 form-group">
                             <label>Data de Nascimento </label>
-                            <input type="text" class="form-control" name="card_birthdate" id="card_birthdate"
+                            <input type="text" class="form-control" name="card_birthdate" id="card_birthdate" required
                                    placeholder="01/10/1979">
                         </div>
                         <div class="col-md-6 form-group">
                             <label>CPF</label>
-                            <input type="text" class="form-control "name="card_cpf"
+                            <input type="text" class="form-control "name="card_cpf" required
                                    placeholder="16263476540">
                         </div>
 
@@ -40,18 +40,18 @@
                     <div class="row">
                         <div class="col-md-6 form-group">
                             <label>Número do cartão <span class="brand"></span></label>
-                            <input type="text" class="form-control "name="card_number">
+                            <input type="text" class="form-control "name="card_number" required>
                             <input type="hidden" name="card_brand">
                         </div>
                         <div class="col-md-6 form-group">
                             <label>Mês de experição</label>
-                            <input type="text" class="form-control "name="card_month">
+                            <input type="text" class="form-control "name="card_month" required>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-6 form-group">
                             <label>Ano experição</label>
-                            <input type="text" class="form-control "name="card_year">
+                            <input type="text" class="form-control "name="card_year" required>
                         </div>
                         <div class="col-md-6 form-group">
                             <label>Codigo de Segurança</label>
@@ -74,26 +74,26 @@
                             </div>
                             <div class="col-md-12 form-group">
                                 <label>Rua </label>
-                                <input type="text" class="form-control" value="" name="rua" id="rua" >
+                                <input type="text" class="form-control" value="" name="rua" id="rua" required >
                             </div>
                             <div class="col-md-6 form-group">
                                 <label>Numero:</label>
-                                <input type="text" class="form-control" value="" name="numero" id="numero">
+                                <input type="text" class="form-control" value="" name="numero" id="numero" required>
                             </div>
                             <div class="col-md-6 form-group">
                                 <label>Bairro</label>
-                                <input type="text" class="form-control" value="" id="bairro" name="bairro">
+                                <input type="text" class="form-control" value="" id="bairro" name="bairro" required>
                             </div>
 
                             <div class="col-md-6 form-group">
                                 <label>Cidade</label>
-                                <input type="text" class="form-control" value="" id="cidade" name="cidade"
+                                <input type="text" class="form-control" value="" id="cidade" name="cidade" required
                                        placeholder="São Paulo"
                                 >
                             </div>
                             <div class="col-md-6 form-group">
                                 <label>Estado</label>
-                                <input type="text" class="form-control" value="" id="uf" name="uf"
+                                <input type="text" class="form-control" value="" id="uf" name="uf" required
                                        placeholder="SP">
                             </div>
                             <div class="col-md-6 form-group">

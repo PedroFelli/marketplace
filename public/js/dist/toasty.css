@@ -68,9 +68,9 @@
 
 /* error toast class: */
 .toast--error {
-  color: #a94442;
-  background-color: #ffecec;
-  border-color: #f5aca6;
+  color: #ff0000;
+    background-color: #d8ff00;
+  border-color: #6a2c29;
 }
 
 /* this class is assigned to each toast message when autoClose
@@ -112,7 +112,7 @@
 }
 
 .toast-progressbar--error {
-  background-color: #f5aca6;
+    background-color: #fc1616;
 }
 
 /**

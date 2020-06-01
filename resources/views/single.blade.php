@@ -53,47 +53,67 @@
                         <div class="p-t-33">
                             <form action="{{route('cart.add')}}" method="post">
                                 @csrf
-                            <div class="flex-w flex-r-m p-b-10">
-                                <div class="size-203 flex-c-m respon6">
-                                    Tamanho
+                                <div class="flex-w flex-r-m p-b-10">
+                                    @if(!$sizes)
+                                        <p style="text-align: center;font-weight: bold; font-size: 16px; color: red;"> Produto indisponível
+                                        @error('size')
+                                         , você não pode adicionar um produto fora de estoque no carrinho.</p>
+                                        @enderror
+                                    @else
+                                    <div class="size-203 flex-c-m respon6">
+                                        Tamanho
+                                    </div>
+
+                                    <div class="size-204 respon6-next">
+                                        <div class="rs1-select2 bor8 bg0">
+                                            <select class="js-select2"  id="productSize"  name="size" onchange="sizeSelect(event)">
+                                                <option selected disabled>Selecione o tamanho</option>
+                                                @foreach($sizes as $size)
+                                                    <option value="{{$size->id}}"
+                                                            @if(!$product->sizes->contains($size))
+                                                            disabled @endif>{{$size->name}}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                            <div class="dropDownSelect2"></div>
+                                        </div>
+                                        @error('size')
+                                        <span style="color: red"> <strong>{{$message}}</strong></span>
+                                        @enderror
+                                        @endif
+                                    </div>
+
                                 </div>
 
-                                <div class="size-204 respon6-next">
-                                    <div class="rs1-select2 bor8 bg0">
-                                        <select class="js-select2"  id="productSize"  name="size" onchange="sizeSelect(event)" >
-                                            <option selected disabled>Selecione o tamanho</option>
-                                            <option> P</option>
-                                            <option> M</option>
-                                            <option> G</option>
-                                        </select>
-                                        <div class="dropDownSelect2"></div>
-                                    </div>
-                                </div>
-                                @error('size')
-                                <span style="color: red"> <strong>{{$message}}</strong></span>
-                                @enderror
-                            </div>
+                                <div class="flex-w flex-r-m p-b-10">
+                                    @if(!$colors)
 
-                            <div class="flex-w flex-r-m p-b-10">
-                                <div class="size-203 flex-c-m respon6">
-                                    Cor
+
+                                    @else
+                                        <div class="size-203 flex-c-m respon6">
+                                            Cor
+                                        </div>
+
+                                        <div class="size-204 respon6-next">
+                                            <div class="rs1-select2 bor8 bg0">
+                                                <select class="js-select2" id="productColor" name="color" onchange="colorSelect(event)">
+                                                    <option selected disabled>Selecione a cor</option>
+                                                    @foreach($colors as $color)
+                                                        <option value="{{$color->id}}"
+                                                                @if(!$product->colors->contains($color))
+                                                                disabled @endif>{{$color->name}}
+                                                        </option>
+                                                    @endforeach
+                                                </select>
+                                                <div class="dropDownSelect2"></div>
+                                            </div>
+                                            @error('color')
+                                            <span style="color: red"> <strong>{{$message}}</strong></span>
+                                            @enderror
+                                            @endif
+                                        </div>
                                 </div>
-                                <div class="size-204 respon6-next">
-                                    <div class="rs1-select2 bor8 bg0">
-                                        <select class="js-select2" id="productColor" name="color" onchange="colorSelect(event)">
-                                            <option selected disabled>Selecione a cor</option>
-                                            <option>Red</option>
-                                            <option>Blue</option>
-                                            <option>White</option>
-                                            <option>Grey</option>
-                                        </select>
-                                        <div class="dropDownSelect2"></div>
-                                    </div>
-                                </div>
-                                @error('color')
-                                <span style="color: red"> <strong>{{$message}}</strong></span>
-                                @enderror
-                            </div>
+
 
                             <div class="flex-w flex-r-m p-b-10">
                                 <div class="size-204 flex-w flex-m respon6-next">
@@ -121,9 +141,11 @@
                                                     <i class="fs-16 zmdi zmdi-plus"></i>
                                                 </div>
                                             </div>
-                                            <button class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
-                                                Adicionar ao carrinho
-                                            </button>
+                                            @if($sizes)
+                                                <button class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
+                                                    Adicionar ao carrinho
+                                                </button>
+                                            @endif
                                         </div>
                                 </div>
                             </div>

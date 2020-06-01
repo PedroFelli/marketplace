@@ -40,11 +40,8 @@ submitButton.addEventListener('click', function (event) {
                 console.log(res);
                 proccessPayment(res.card.token);
             },
-
             error: function (err) {
-                var msg = "Ops, tivemos um erro com o seu pagamento, confira seus dados";
-                console.log(err.errors);
-                toast.error(msg, 5000);
+                toast.error(msgErros[Object.keys(err.errors)[0]], 10000);
                 $('.alert').alert()
                 $(".processCheckout").removeClass('d-none');
                 $("#spinner-pag").addClass('d-none');
@@ -54,6 +51,8 @@ submitButton.addEventListener('click', function (event) {
     catch (e) {
        console.log(e.errors);
     }
+
+
 
 })
 

@@ -51,6 +51,28 @@
             @enderror
         </div>
         <div class="form-form-group">
+            <label for="">Tamanho</label>
+            <select name="sizes[]" id="" class="form-control" multiple>
+                @foreach($sizes as $size)
+                    <option value="{{$size->id}}">{{$size->name}}</option>
+                @endforeach
+            </select>
+        </div>
+        <div class="form-form-group">
+            <label for="">Cor</label>
+            <select name="colors[]" id="" class="form-control" multiple>
+                @foreach($colors as $color)
+                    <option value="{{$color->id}}">{{$color->name}}</option>
+                @endforeach
+            </select>
+            @error('colors')
+            <div class="invalid-feedback">
+                {{$message}}
+            </div>
+            @enderror
+        </div>
+
+        <div class="form-form-group">
             <label for="">Categorias</label>
             <select name="categories[]" id="" class="form-control" multiple>
                 @foreach($categories as $category)
