@@ -24,19 +24,19 @@
                         <option value="4" @if($order->pedido_status == 4) selected @endif>Enviado</option>
                     </select>
                 </div>
-                    @if($order->pedido_status == 1)
+                    @if($order->pagseguro_status == 1)
                         <div class="progress" style="margin-bottom: 5px;">
                             <div class="progress-bar progress-bar-striped progress-bar-animated bg-warning" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%"></div>
                         </div>
-                    @elseif ($order->pedido_status == 2)
+                    @elseif ($order->pagseguro_status == 2)
                         <div class="progress" style="margin-bottom: 5px;">
                             <div class="progress-bar progress-bar-striped progress-bar-animated bg-info" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 50%"></div>
                         </div>
-                    @elseif ($order->pedido_status == 3)
+                    @elseif ($order->pagseguro_status == 3)
                         <div class="progress" style="margin-bottom: 5px;">
                             <div class="progress-bar progress-bar-striped progress-bar-animated bg-info" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
                         </div>
-                    @elseif ($order->pedido_status == 4)
+                    @elseif ($order->pagseguro_status == 4)
                         <div class="progress" style="margin-bottom: 5px;">
                             <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
                         </div>
@@ -44,19 +44,19 @@
 
                 <div class="form-group">
                     <label>Status do Pagamento:</label>
-                    @if ($order->pedido_status == 1)
+                    @if ($order->pagseguro_status == 1)
                         <input type="text" name="pedido_status" class="form-control" disabled value="Aguardando PagSeguro">
-                    @elseif($order->pedido_status == 2)
+                    @elseif($order->pagseguro_status == 2)
                         <input type="text" name="pedido_status" class="form-control" disabled value="Em análise">
-                    @elseif($order->pedido_status == 3)
+                    @elseif($order->pagseguro_status == 3)
                         <input type="text" name="pedido_status" class="form-control" disabled value="Pago">
-                    @elseif($order->pedido_status == 4)
+                    @elseif($order->pagseguro_status == 4)
                         <input type="text" name="pedido_status" class="form-control" disabled value="Disponível">
-                    @elseif($order->pedido_status == 5)
+                    @elseif($order->pagseguro_status == 5)
                         <input type="text" name="pedido_status" class="form-control" disabled value=" Em disputa">
-                    @elseif($order->pedido_status == 6)
+                    @elseif($order->pagseguro_status == 6)
                         <input type="text" name="pedido_status" class="form-control" disabled value="Devolvida">
-                    @elseif($order->pedido_status == 7)
+                    @elseif($order->pagseguro_status == 7)
                         <input type="text" name="pedido_status" class="form-control" disabled value="Cancelada">
 
                     @endif

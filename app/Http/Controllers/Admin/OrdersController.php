@@ -43,7 +43,7 @@ class OrdersController extends Controller
 
         $order = \App\UserOrder::find($id);
 
-        dd($data);
+//        dd($data);
         $order->update($data);
 
         flash('Pedido atualizado com Sucesso!')->success();

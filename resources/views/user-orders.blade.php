@@ -47,23 +47,25 @@
                                                     <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
                                                 </div>
                                                 @endif
-                                                @if ($order->pedido_status == 1)
+                                                @if ($order->pagseguro_status == 1)
                                                 <p><strong>Status do Pagamento:</strong> Aguardando PagSeguro</p>
-                                                @elseif($order->pedido_status == 2)
+                                                @elseif($order->pagseguro_status == 2)
                                                 <p><strong>Status do Pagamento:</strong> Em análise</p>
-                                                @elseif($order->pedido_status == 3)
+                                                @elseif($order->pagseguro_status == 3)
                                                 <p><strong>Status do Pagamento:</strong> Pago</p>
-                                                @elseif($order->pedido_status == 4)
+                                                @elseif($order->pagseguro_status == 4)
                                                 <p><strong>Status do Pagamento:</strong> Disponível</p>
-                                                @elseif($order->pedido_status == 5)
+                                                @elseif($order->pagseguro_status == 5)
                                                 <p><strong>Status do Pagamento:</strong> Em disputa</p>
-                                                @elseif($order->pedido_status == 6)
+                                                @elseif($order->pagseguro_status == 6)
                                                 <p><strong>Status do Pagamento:</strong> Devolvida</p>
-                                                @elseif($order->pedido_status == 7)
+                                                @elseif($order->pagseguro_status == 7)
                                                 <p><strong>Status do Pagamento:</strong> Cancelada</p>
                                                 @endif
 
+                                            <p>Codigo de rastreio: {{$order->send_cod_rastreio}}</p>
                                         </div>
+
 
                                         <div class="col-md-3">
                                             @php
@@ -84,6 +86,7 @@
                                         <div class="col-md-3">
                                             <p> Data do pedido: {{$order->created_at->format('d-m-Y')}}</p>
                                             <p>Valor do pedido: {{$total}}</p>
+
                                         </div>
                                     </div>
                                 </div>
