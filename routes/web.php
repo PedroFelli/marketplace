@@ -17,6 +17,13 @@ Route::get('/category/{slug}', 'CategoryController@index')->name('category.singl
 Route::get('/store/', 'StoreController@index')->name('store.index');
 //Route::get('/store/{slug}', 'StoreController@index')->name('store.single');
 
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('not', function(){});
+
+
 
 Route::prefix('cart')->name('cart.')->group(function (){
     Route::get('/', 'CartController@index')->name('index');
@@ -56,12 +63,8 @@ Route::group(['middleware' => ['auth', 'access.control.store.admin']], function 
     });
 });
 
-Auth::routes();
 
-
-Route::get('not', function(){
-
-    $user = \App\User::find(41);
+//    $user = \App\User::find(41);
 //    $user->notify(new \App\Notifications\StoreReceiveNewOrder());
 
 //    $notification = $user->unreadNotifications->first();
@@ -75,6 +78,5 @@ Route::get('not', function(){
 //        });
 //
 //    return $store;
-});
 
-Route::get('/home', 'HomeController@index')->name('home');
+

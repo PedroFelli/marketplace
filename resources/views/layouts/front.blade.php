@@ -179,11 +179,7 @@
             <li>
                 <a href="{{route('store.index')}}">Loja</a>
             </li>
-            <li>
-                <a href="{{route('store.index')}}" class="label1 rs1" data-label1="hot">
-                    Novidades
-                </a>
-            </li>
+
 
         </ul>
     </div>
