@@ -13,8 +13,9 @@
                             <tr>
                                 <th>#</th>
                                 <th>N° do pedido</th>
-                                <th>PagSeguro Status</th>
-                                <th>PagSeguro Status</th>
+                                <th>PagSeguro status</th>
+                                <th>Status do pedido</th>
+                                <th>Data</th>
                                 <th>Ações</th>
                             </tr>
                             </thead>
@@ -24,6 +25,7 @@
                                 <th>N° do pedido</th>
                                 <th>PagSeguro Status</th>
                                 <th>Pedido Status</th>
+                                <th>Data</th>
                                 <th>Ações</th>
                             </tr>
                             </tfoot>
@@ -34,6 +36,7 @@
                                     <td>{{$order->reference}}</td>
                                     <td>{{$order->pagseguro_status}}</td>
                                     <td>{{$order->pedido_status}}</td>
+                                    <td>{{$order->created_at->format('d-m-Y H:i')}}</td>
 
                                     <td>
                                         <div class="btn-group">

@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class UserNewOrder extends Notification
+class StoreReceiveNewPayment extends Notification
 {
     use Queueable;
 
@@ -19,23 +19,23 @@ class UserNewOrder extends Notification
 
     public function via($notifiable)
     {
-        return ['mail'];
+        return ['database','mail'];
     }
+
 
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->subject('Você realizou um novo pedido!')
-                    ->line('Você fez um novo pedido. Estamos processando o pagamento.')
-                    ->line('Você pode acompanhar o status do seu pedido.')
-                    ->action('Meus pedidos', url('/'))
-                    ->line('Obrigado por comprar em nossa Loja');
+            ->subject('Houve uma alteração no pagamento')
+            ->greeting('Olá Mally')
+            ->line('Houve um uma alteração no status do seu pedido')
+            ->action('Ver pedido', route('admin.orders.my'));
     }
 
     public function toArray($notifiable)
     {
         return [
-            'message' => 'Obrigado por comprar em nossa loja'
+            'message' => 'Houve um uma alteração no status do seu pedido'
         ];
     }
 }

@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class UserNewOrder extends Notification
+class UserReceiveNewPayment extends Notification
 {
     use Queueable;
 
@@ -25,17 +25,23 @@ class UserNewOrder extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->subject('Você realizou um novo pedido!')
-                    ->line('Você fez um novo pedido. Estamos processando o pagamento.')
-                    ->line('Você pode acompanhar o status do seu pedido.')
-                    ->action('Meus pedidos', url('/'))
-                    ->line('Obrigado por comprar em nossa Loja');
+            ->subject('Recebemos o seu pagamento!')
+            ->line('Recebemos o seu pagamento e o pedido está sendo separado para entrega')
+            ->line('Você pode acompanhar o status do seu pedido.')
+            ->action('Meus pedidos', url('/'))
+            ->line('Obrigado por comprar em nossa Loja');
     }
 
+    /**
+     * Get the array representation of the notification.
+     *
+     * @param  mixed  $notifiable
+     * @return array
+     */
     public function toArray($notifiable)
     {
         return [
-            'message' => 'Obrigado por comprar em nossa loja'
+            //
         ];
     }
 }

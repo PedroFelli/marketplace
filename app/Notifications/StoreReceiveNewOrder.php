@@ -30,8 +30,7 @@ class StoreReceiveNewOrder extends Notification
                     ->subject('Você recebeu um novo pedido!')
                     ->greeting('Olá vendedor, tudo bem?')
                     ->line('Você recebeu um novo pedido na loja!')
-                    ->action('Ver pedido', route('admin.orders.my'))
-                    ->line('Thank you for using our application!');
+                    ->action('Ver pedido', route('admin.orders.my'));
     }
 
     public function toArray($notifiable)

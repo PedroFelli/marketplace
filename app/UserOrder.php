@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class UserOrder extends Model
 {
-    protected $fillable = ['reference', 'pagseguro_status', 'pagseguro_code', 'items', 'pedido_status', 'codigo_rastreio', 'send_cod_rastreio'];
+    protected $fillable = ['reference', 'pagseguro_status', 'pagseguro_code', 'items', 'pedido_status', 'codigo_rastreio', 'send_cod_rastreio', 'sender_adress'];
     public function user(){
         return $this->belongsTo(User::class);
     }
@@ -18,4 +18,5 @@ class UserOrder extends Model
     public function stores(){
         return $this->belongsToMany(Store::class, 'order_store', 'order_id');
     }
+
 }

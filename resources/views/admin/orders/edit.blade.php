@@ -81,6 +81,8 @@
                     </div>
                 </div>
                 <hr>
+                <div class="row">
+                    <div class="col-6">
                 <strong>Items:</strong>
                 @php $items = unserialize($order->items);  @endphp
                 @foreach( filterItemsByStore($items, auth()->user()->store->id) as $item)
@@ -91,6 +93,19 @@
                     </p>
 
                 @endforeach
+                    </div>
+                    <div class="col-6">
+                        <strong>Endereço:</strong> <br>
+                            CEP: {{ $adress[1]}} <br>
+                            Rua:  {{ $adress[2]}} <br>
+                            Numero: {{ $adress[3]}} <br>
+                            Bairro: {{ $adress[4]}} <br>
+                            Cidade: {{ $adress[5]}} <br>
+                            UF: {{ $adress[6]}} <br>
+                            Complemento: {{ $adress[7]}}
+
+                    </div>
+                </div>
 
 
 

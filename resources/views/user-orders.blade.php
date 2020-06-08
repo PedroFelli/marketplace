@@ -63,7 +63,7 @@
                                                 <p><strong>Status do Pagamento:</strong> Cancelada</p>
                                                 @endif
 
-                                            <p>Codigo de rastreio: {{$order->send_cod_rastreio}}</p>
+                                            <p><strong>Codigo de rastreio</strong>: {{$order->codigo_rastreio}}</p>
                                         </div>
 
 
@@ -94,14 +94,15 @@
                         </div>
                     </div>
                 </div>
+            <hr>
+            {{$userOders->links()}}
         @empty
             <div class="alert alert-warning">Nenhum pedido recebido</div>
         @endforelse
 
 
 
-        <hr>
-        {{$userOders->links()}}
+
     </div>
     </div>
 @endsection

@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Notifications\StoreReceiveNewPayment;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 use Illuminate\Database\Eloquent\Model;
@@ -39,5 +40,14 @@ class Store extends Model
         })->each->notify(new StoreReceiveNewOrder);
 
     }
+
+    public function notifyStoreReceiveNewPayment(array $storeId = []){
+        $stores = $this->whereIn('id', $storeId)->get();
+
+        return $stores->map(function ($store){
+            return $store->user;
+        })->each->notify(new StoreReceiveNewPayment());
+    }
+
 
 }

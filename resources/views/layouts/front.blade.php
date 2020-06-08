@@ -66,12 +66,6 @@
                         <li>
                             <a href="{{route('store.index')}}">Loja</a>
                         </li>
-
-                        <li class="label1" data-label1="hot">
-                            <a href="{{route('store.index')}}">Novidades</a>
-                        </li>
-
-
                     </ul>
                 </div>
 
@@ -621,7 +615,6 @@
     </div>
 
 </div>
-
 
 <!--===============================================================================================-->
 <script src="{{asset('js/jquery-3.2.1.min.js')}}"></script>

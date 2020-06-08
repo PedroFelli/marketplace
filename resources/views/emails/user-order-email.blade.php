@@ -1,2 +1,2 @@
-<h1>Olá, {{$user->name}},
-    <br>Obrigado por sua inscrição</h1>
+<h1>Olá, {{$user->id}},
+    <br>Codigo de rastreio</h1>
